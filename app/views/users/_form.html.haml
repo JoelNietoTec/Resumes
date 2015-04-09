@@ -1,0 +1,6 @@
+.col-lg-4.center-block.well
+  = simple_form_for @user do |f|
+    = f.input :email, label: 'Correo Electrónico', placeholder: 'tu@dominio.com'
+    = f.input :password, label: 'Contraseña', placeholder: 'Nueva Contraseña...'
+    = f.input :password_confirmation, label: 'Confirmar de contraseña', placeholder: 'Repetir nueva contraseña...'
+    = f.button :submit, "Crear Usuario", class: 'btn-primary'

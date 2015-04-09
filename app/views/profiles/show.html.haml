@@ -1,0 +1,60 @@
+%p#notice= notice
+
+%p
+  %b User:
+  = @profile.user
+%p
+  %b Forenames:
+  = @profile.forenames
+%p
+  %b Surnames:
+  = @profile.surnames
+%p
+  %b Email:
+  = @profile.email
+%p
+  %b Sex:
+  = @profile.sex_id
+%p
+  %b Marital status:
+  = @profile.marital_status_id
+%p
+  %b Birth date:
+  = @profile.birth_date
+%p
+  %b Professional title:
+  = @profile.professional_title
+%p
+  %b Nationality:
+  = @profile.nationality_id
+%p
+  %b Country:
+  = @profile.country_id
+%p
+  %b Province:
+  = @profile.province_id
+%p
+  %b District:
+  = @profile.district_id
+%p
+  %b Township:
+  = @profile.township_id
+%p
+  %b Address:
+  = @profile.address
+%p
+  %b Phone number:
+  = @profile.phone_number
+%p
+  %b Skills:
+  = @profile.skills
+%p
+  %b Wage aspiration:
+  = @profile.wage_aspiration
+%p
+  %b Presentation:
+  = @profile.presentation
+
+= link_to 'Edit', edit_profile_path(@profile)
+\|
+= link_to 'Back', profiles_path

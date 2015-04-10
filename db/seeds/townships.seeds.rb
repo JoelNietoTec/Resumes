@@ -230,7 +230,7 @@ Township.create([
   { district_id: 36, name: 'el rincón'},
   { district_id: 36, name: 'el limón'},
   { district_id: 36, name: 'los canelos'},
-  { district_id: 37, name: 'guararñe'},
+  { district_id: 37, name: 'guararé'},
   { district_id: 37, name: 'el espinal'},
   { district_id: 37, name: 'el macano'},
   { district_id: 37, name: 'guararé arriba'},

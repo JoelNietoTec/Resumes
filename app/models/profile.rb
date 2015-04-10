@@ -6,4 +6,5 @@ class Profile < ActiveRecord::Base
   belongs_to :district
   belongs_to :township
   belongs_to :country
+  mount_uploader :avatar, AvatarUploader
 end

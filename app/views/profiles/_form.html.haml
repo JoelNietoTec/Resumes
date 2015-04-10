@@ -8,6 +8,8 @@
         .col-lg-6
           = f.input :surnames, label: 'Apellidos', placeholder: 'Tus apellidos...', input_html: { class: 'input-lg' }
         .col-lg-12
+          = f.input :avatar, :as => :nice_image, label: 'Foto'
+        .col-lg-12
           = f.input :presentation, as: :wysihtml5, input_html: { class: 'input-lg' }, label: 'Presentación'
         .col-lg-6
           = f.input :email, label: 'Correo Electrónico', placeholder: 'tu@dominio.com', input_html: { class: 'input-lg' }

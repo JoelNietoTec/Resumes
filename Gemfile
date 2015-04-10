@@ -68,3 +68,7 @@ gem 'bootstrap-wysihtml5-rails'
 gem 'simple_form'
 
 gem 'carrierwave'
+
+gem 'rmagick'
+
+gem 'simple_form_fancy_uploads'

@@ -7,4 +7,6 @@ class Profile < ActiveRecord::Base
   belongs_to :township
   belongs_to :country
   mount_uploader :avatar, AvatarUploader
+  has_many :experiences, -> { order "begin_date DESC" }
+  accepts_nested_attributes_for :experiences, allow_destroy: true
 end

@@ -1,0 +1,16 @@
+= simple_form_for(@experience) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.association :profile
+    = f.input :company
+    = f.input :position
+    = f.input :professional_area_id
+    = f.input :starting_salary
+    = f.input :final_salary
+    = f.input :begin_date
+    = f.input :end_date
+    = f.input :job_description
+
+  .form-actions
+    = f.button :submit

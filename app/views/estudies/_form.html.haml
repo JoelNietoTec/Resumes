@@ -1,0 +1,15 @@
+= simple_form_for(@estudy) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.association :profile
+    = f.input :institution
+    = f.input :title
+    = f.input :education_level_id
+    = f.input :professional_area_id
+    = f.input :begin_year
+    = f.input :end_year
+    = f.input :finished
+
+  .form-actions
+    = f.button :submit

@@ -16,5 +16,9 @@
  */
 
 .center-block {
-  float: none !important
+  float: none !important;
+}
+
+.elimina {
+  text-align: right;
 }

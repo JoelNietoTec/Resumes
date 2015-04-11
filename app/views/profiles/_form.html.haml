@@ -1,48 +1,81 @@
-.col-lg-8.center-block.panel
-  .panel-body
-    = simple_form_for(@profile) do |f|
-      = f.error_notification
-      .form-inputs
-        .col-lg-6
-          = f.input :forenames, label: 'Nombres', placeholder: 'Tus nombres...', input_html: { class: 'input-lg' }
-        .col-lg-6
-          = f.input :surnames, label: 'Apellidos', placeholder: 'Tus apellidos...', input_html: { class: 'input-lg' }
-        .col-lg-12
-          = f.input :avatar, :as => :nice_image, label: 'Foto'
-        .col-lg-12
-          = f.input :presentation, as: :wysihtml5, input_html: { class: 'input-lg' }, label: 'Presentación'
-        .col-lg-6
-          = f.input :email, label: 'Correo Electrónico', placeholder: 'tu@dominio.com', input_html: { class: 'input-lg' }
-        .col-lg-3
-          = f.association :sex, include_blank: false, input_html: { class: 'input-lg' }, label: 'Sexo'
-        .col-lg-3
-          = f.association :marital_status, include_blank: false, input_html: { class: 'input-lg' }, label: 'Estado Civil'
-        .col-lg-3
-          = f.input :birth_date, as: :string, input_html: { class: 'datepicker input-lg' }, label: 'Fecha de Nacimiento', placeholder: 'Fecha de Nacimiento...'
-        .col-lg-3
-          = f.input :phone_number, input_html: { class: 'input-lg' }, label: 'Teléfono', placeholder: 'Nro. de Teléfono'
-        .col-lg-6
-          = f.input :nationality_id, collection: Country.all, value_method: :id, label_method: :title, selected: '169', input_html: { class: 'input-lg' }, label: 'Nacionalidad'
-        .col-lg-6
-          = f.input :wage_aspiration, input_html: { class: 'input-lg' }, label: 'Aspiración Salarial', placeholder: 'Salario mensual deseado'
-        .col-lg-6
-          = f.input :skills, input_html: { class: 'input-lg' }, label: 'Habilidades', placeholder: 'Habilidades separadas por coma...'
-        .col-lg-12
-          = f.input :professional_title, input_html: { class: 'input-lg' }, label: 'Título Profesional', placeholder: 'Ejem: "Administrador", "Analista", "Contador"'
-        = f.hidden_field :country_id, :value => '169'
-        .col-lg-12
-          %fieldset
-            %legend
-              %h2 Ubicación
-        .col-lg-4
-          = f.association :province, label_method: :title, value_method: :id, include_blank: false, input_html: { id: 'province_select', class: 'input-lg' }, label: 'Provincia'
-        .col-lg-4
-          = f.input :district_id, label: 'Distrito' do
-            = f.grouped_collection_select :district_id, Province.all, :districts, :id, :id, :title, {}, { :class => 'form-control input-lg', :id => 'district_select' }
-        .col-lg-4
-          = f.input :township_id, label: 'Corregimiento' do
-            = f.grouped_collection_select :township_id, District.all, :townships, :id, :id, :title, {}, { :class => 'form-control input-lg', :id => 'township_select' }
-        .col-lg-12
-          = f.input :address, input_html: { class: 'input-lg' }, label: 'Dirección'
-      .form-actions
-        = f.button :submit, "Salvar Perfil", class: 'btn-lg btn-primary'
+.col-lg-8.center-block
+  = simple_nested_form_for(@profile) do |f|
+    .panel
+      .panel-body
+        = f.error_notification
+        .form-inputs
+          .col-lg-6
+            = f.input :forenames, label: 'Nombres', placeholder: 'Tus nombres...', input_html: { class: 'input-lg' }
+          .col-lg-6
+            = f.input :surnames, label: 'Apellidos', placeholder: 'Tus apellidos...', input_html: { class: 'input-lg' }
+          .col-lg-12
+            = f.input :avatar, :as => :nice_image, label: 'Foto'
+          .col-lg-12
+            = f.input :presentation, as: :wysihtml5, input_html: { class: 'input-lg' }, label: 'Presentación'
+          .col-lg-6
+            = f.input :email, label: 'Correo Electrónico', placeholder: 'tu@dominio.com', input_html: { class: 'input-lg' }
+          .col-lg-3
+            = f.association :sex, include_blank: false, input_html: { class: 'input-lg' }, label: 'Sexo'
+          .col-lg-3
+            = f.association :marital_status, include_blank: false, input_html: { class: 'input-lg' }, label: 'Estado Civil'
+          .col-lg-3
+            = f.input :birth_date, as: :string, input_html: { class: 'datepicker input-lg' }, label: 'Fecha de Nacimiento', placeholder: 'Fecha de Nacimiento...'
+          .col-lg-3
+            = f.input :phone_number, input_html: { class: 'input-lg' }, label: 'Teléfono', placeholder: 'Nro. de Teléfono'
+          .col-lg-6
+            = f.input :nationality_id, collection: Country.all, value_method: :id, label_method: :title, selected: '169', input_html: { class: 'input-lg' }, label: 'Nacionalidad'
+          .col-lg-6
+            = f.input :wage_aspiration, input_html: { class: 'input-lg' }, label: 'Aspiración Salarial', placeholder: 'Salario mensual deseado'
+          .col-lg-6
+            = f.input :skills, input_html: { class: 'input-lg' }, label: 'Habilidades', placeholder: 'Habilidades separadas por coma...'
+          .col-lg-12
+            = f.input :professional_title, input_html: { class: 'input-lg' }, label: 'Título Profesional', placeholder: 'Ejem: "Administrador", "Analista", "Contador"'
+          = f.hidden_field :country_id, :value => '169'
+          .col-lg-12
+            %fieldset
+              %legend
+                %h2 Ubicación
+          .col-lg-4
+            = f.association :province, label_method: :title, value_method: :id, include_blank: false, input_html: { id: 'province_select', class: 'input-lg' }, label: 'Provincia'
+          .col-lg-4
+            = f.input :district_id, label: 'Distrito' do
+              = f.grouped_collection_select :district_id, Province.all, :districts, :id, :id, :title, {}, { :class => 'form-control input-lg', :id => 'district_select' }
+          .col-lg-4
+            = f.input :township_id, label: 'Corregimiento' do
+              = f.grouped_collection_select :township_id, District.all, :townships, :id, :id, :title, {}, { :class => 'form-control input-lg', :id => 'township_select' }
+          .col-lg-12
+            = f.input :address, input_html: { class: 'input-lg' }, label: 'Dirección'
+    %br
+    %fieldset
+      %legend
+        %h1 Experiencias Laborales
+    = f.link_to_add :experiences, :class => "btn btn-lg btn-primary" do
+      = fa_icon 'plus', class: "text-success"
+      Agregar Experiencia
+    %br
+    %br
+    = f.simple_fields_for :experiences do |exp|
+      .panel
+        .panel-body
+          .elimina
+            = exp.link_to_remove do
+              .btn.btn-danger
+                Eliminar
+          .col-lg-12
+            = exp.input :position, label: 'Puesto', placeholder: 'Cargo desempeñado', input_html: { class: 'input-lg' }
+          .col-lg-12
+            = exp.input :company, label: 'Empresa', placeholder: 'Empleador', input_html: { class: "input-lg" }
+          .col-lg-12
+            = exp.association :professional_area, collection: ProfessionalArea.order(:name), include_blank: false, input_html: { class: 'input-lg' }, label: 'Area'
+          .col-lg-6
+            = exp.input :starting_salary, label: "Salario Inicial", placeholder: 'Primer salario devengado', input_html: { class: 'input-lg' }
+          .col-lg-6
+            = exp.input :final_salary, label: "Salario Final", placeholder: 'Último salario devengado', input_html: { class: 'input-lg' }
+          .col-lg-6
+            = exp.input :begin_date, as: :string, label: "Fecha de Ingreso", input_html: { class:  "input-lg datepicker" }, placeholder: 'Fecha de ingreso al empleo'
+          .col-lg-6
+            = exp.input :end_date, as: :string, label: 'Fecha de Salida', input_html: { class: "input-lg datepicker" }, placeholder: "Fecha de salida del empleo"
+          .col-lg-12
+            = exp.input :job_description, input_html: { class: 'input-lg', rows: '5' }, label: 'Descripción de Funciones'
+    .form-actions
+      = f.button :submit, "Salvar Perfil", class: 'btn-lg btn-primary'

@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  profile_id:
+  company: MyString
+  position: MyString
+  professional_area_id: 1
+  starting_salary: 1.5
+  final_salary: 1.5
+  begin_date: 2015-04-09
+  end_date: 2015-04-09
+  job_description: MyText
+
+two:
+  profile_id:
+  company: MyString
+  position: MyString
+  professional_area_id: 1
+  starting_salary: 1.5
+  final_salary: 1.5
+  begin_date: 2015-04-09
+  end_date: 2015-04-09
+  job_description: MyText

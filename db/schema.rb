@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150408222720) do
+ActiveRecord::Schema.define(version: 20150411045021) do
 
   create_table "countries", force: :cascade do |t|
     t.string   "name",         limit: 255
@@ -31,7 +31,50 @@ ActiveRecord::Schema.define(version: 20150408222720) do
 
   add_index "districts", ["province_id"], name: "index_districts_on_province_id", using: :btree
 
+  create_table "education_levels", force: :cascade do |t|
+    t.string   "name",       limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  create_table "estudies", force: :cascade do |t|
+    t.integer  "profile_id",           limit: 4
+    t.string   "institution",          limit: 255
+    t.string   "title",                limit: 255
+    t.integer  "education_level_id",   limit: 4
+    t.integer  "professional_area_id", limit: 4
+    t.integer  "begin_year",           limit: 4
+    t.integer  "end_year",             limit: 4
+    t.boolean  "finished",             limit: 1
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
+  end
+
+  add_index "estudies", ["profile_id"], name: "index_estudies_on_profile_id", using: :btree
+
+  create_table "experiences", force: :cascade do |t|
+    t.integer  "profile_id",           limit: 4
+    t.string   "company",              limit: 255
+    t.string   "position",             limit: 255
+    t.integer  "professional_area_id", limit: 4
+    t.float    "starting_salary",      limit: 24
+    t.float    "final_salary",         limit: 24
+    t.date     "begin_date"
+    t.date     "end_date"
+    t.text     "job_description",      limit: 65535
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
+  end
+
+  add_index "experiences", ["profile_id"], name: "index_experiences_on_profile_id", using: :btree
+
   create_table "marital_statuses", force: :cascade do |t|
+    t.string   "name",       limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  create_table "professional_areas", force: :cascade do |t|
     t.string   "name",       limit: 255
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
@@ -98,6 +141,8 @@ ActiveRecord::Schema.define(version: 20150408222720) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
 
   add_foreign_key "districts", "provinces"
+  add_foreign_key "estudies", "profiles"
+  add_foreign_key "experiences", "profiles"
   add_foreign_key "profiles", "users"
   add_foreign_key "provinces", "countries"
   add_foreign_key "townships", "districts"

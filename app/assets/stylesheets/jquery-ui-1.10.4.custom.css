@@ -301,6 +301,8 @@ button.ui-button::-moz-focus-inner {
 	width: 17em;
 	padding: .2em .2em 0;
 	display: none;
+  border-radius: 7px;
+  font-size: 18px;
 }
 .ui-datepicker .ui-datepicker-header {
 	position: relative;

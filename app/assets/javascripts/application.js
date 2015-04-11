@@ -13,15 +13,28 @@
 //= require jquery
 //= require jquery.turbolinks
 //= require jquery_ujs
-//= require turbolinks
 //= require bootstrap-wysihtml5
-//= require bootstrap-wysihtml5/minimum
 //= require bootstrap-wysihtml5/locales/es-ES
 //= require_tree .
 
 $(function() {
   $(".datepicker").datepicker({
     changeYear: true,
-    changeMonth: true
+    changeMonth: true,
+    showAnim: "blind"
   });
+});
+
+$(document).on('nested:fieldAdded', function(event){
+  // this field was just inserted into your form
+  var field = event.field;
+  // it's a jQuery object already! Now you can find date input
+  var dateField = field.find('.datepicker');
+  // and activate datepicker on it
+  dateField.datepicker(
+    {
+      changeYear: true,
+      changeMonth: true,
+      showAnim: "blind"
+    });
 });

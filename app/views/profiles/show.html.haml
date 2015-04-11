@@ -1,8 +1,8 @@
 %p#notice= notice
 
 %p
-  %b User:
-  = @profile.user
+  %b :
+  = image_tag @profile.avatar.url
 %p
   %b Forenames:
   = @profile.forenames
@@ -53,7 +53,10 @@
   = @profile.wage_aspiration
 %p
   %b Presentation:
-  = @profile.presentation
+  = (@profile.presentation).html_safe
+%h3
+  Experiencias
+= render "experiences/index"
 
 = link_to 'Edit', edit_profile_path(@profile)
 \|

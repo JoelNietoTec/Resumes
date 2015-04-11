@@ -1,0 +1,35 @@
+%h1 Listing estudies
+
+%table
+  %thead
+    %tr
+      %th Profile
+      %th Institution
+      %th Title
+      %th Education level
+      %th Professional area
+      %th Begin year
+      %th End year
+      %th Finished
+      %th
+      %th
+      %th
+
+  %tbody
+    - @estudies.each do |estudy|
+      %tr
+        %td= estudy.profile
+        %td= estudy.institution
+        %td= estudy.title
+        %td= estudy.education_level_id
+        %td= estudy.professional_area_id
+        %td= estudy.begin_year
+        %td= estudy.end_year
+        %td= estudy.finished
+        %td= link_to 'Show', estudy
+        %td= link_to 'Edit', edit_estudy_path(estudy)
+        %td= link_to 'Destroy', estudy, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Estudy', new_estudy_path

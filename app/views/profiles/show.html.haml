@@ -1,8 +1,18 @@
-%p#notice= notice
+.col-lg-10
+  .well.col-lg-12#profile-header
+    .col-lg-3.avatar-container
+      = image_tag @profile.avatar.url(:avatar), :class => "img-circle"
+      %h3
+        = @profile.forenames
+        = @profile.surnames
+      %p
+        = @profile.professional_title.titleize
+    .col-lg-9.profile-intro
+      = (@profile.presentation).html_safe
+  .well.col-lg-12
+    %h3 Información Básica
+    .col
 
-%p
-  %b :
-  = image_tag @profile.avatar.url
 %p
   %b Forenames:
   = @profile.forenames
@@ -47,16 +57,14 @@
   = @profile.phone_number
 %p
   %b Skills:
-  = @profile.skills
+  = @profile.skill_list
 %p
   %b Wage aspiration:
   = @profile.wage_aspiration
 %p
   %b Presentation:
-  = (@profile.presentation).html_safe
-%h3
-  Experiencias
-= render "experiences/index"
+
+
 
 = link_to 'Edit', edit_profile_path(@profile)
 \|

@@ -1,0 +1,30 @@
+%p#notice= notice
+
+%p
+  %b Profile:
+  = @study.profile
+%p
+  %b Institution:
+  = @study.institution
+%p
+  %b Title:
+  = @study.title
+%p
+  %b Education level:
+  = @study.education_level_id
+%p
+  %b Professional area:
+  = @study.professional_area_id
+%p
+  %b Begin year:
+  = @study.begin_year
+%p
+  %b End year:
+  = @study.end_year
+%p
+  %b Finished:
+  = @study.finished
+
+= link_to 'Edit', edit_study_path(@study)
+\|
+= link_to 'Back', studies_path

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150411045021) do
+ActiveRecord::Schema.define(version: 20150411160458) do
 
   create_table "countries", force: :cascade do |t|
     t.string   "name",         limit: 255
@@ -36,21 +36,6 @@ ActiveRecord::Schema.define(version: 20150411045021) do
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
   end
-
-  create_table "estudies", force: :cascade do |t|
-    t.integer  "profile_id",           limit: 4
-    t.string   "institution",          limit: 255
-    t.string   "title",                limit: 255
-    t.integer  "education_level_id",   limit: 4
-    t.integer  "professional_area_id", limit: 4
-    t.integer  "begin_year",           limit: 4
-    t.integer  "end_year",             limit: 4
-    t.boolean  "finished",             limit: 1
-    t.datetime "created_at",                       null: false
-    t.datetime "updated_at",                       null: false
-  end
-
-  add_index "estudies", ["profile_id"], name: "index_estudies_on_profile_id", using: :btree
 
   create_table "experiences", force: :cascade do |t|
     t.integer  "profile_id",           limit: 4
@@ -121,6 +106,41 @@ ActiveRecord::Schema.define(version: 20150411045021) do
     t.datetime "updated_at",             null: false
   end
 
+  create_table "studies", force: :cascade do |t|
+    t.integer  "profile_id",           limit: 4
+    t.string   "institution",          limit: 255
+    t.string   "title",                limit: 255
+    t.integer  "education_level_id",   limit: 4
+    t.integer  "professional_area_id", limit: 4
+    t.integer  "begin_year",           limit: 4
+    t.integer  "end_year",             limit: 4
+    t.boolean  "finished",             limit: 1
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
+  end
+
+  add_index "studies", ["profile_id"], name: "index_studies_on_profile_id", using: :btree
+
+  create_table "taggings", force: :cascade do |t|
+    t.integer  "tag_id",        limit: 4
+    t.integer  "taggable_id",   limit: 4
+    t.string   "taggable_type", limit: 255
+    t.integer  "tagger_id",     limit: 4
+    t.string   "tagger_type",   limit: 255
+    t.string   "context",       limit: 128
+    t.datetime "created_at"
+  end
+
+  add_index "taggings", ["tag_id", "taggable_id", "taggable_type", "context", "tagger_id", "tagger_type"], name: "taggings_idx", unique: true, using: :btree
+  add_index "taggings", ["taggable_id", "taggable_type", "context"], name: "index_taggings_on_taggable_id_and_taggable_type_and_context", using: :btree
+
+  create_table "tags", force: :cascade do |t|
+    t.string  "name",           limit: 255
+    t.integer "taggings_count", limit: 4,   default: 0
+  end
+
+  add_index "tags", ["name"], name: "index_tags_on_name", unique: true, using: :btree
+
   create_table "townships", force: :cascade do |t|
     t.integer  "district_id", limit: 4
     t.string   "name",        limit: 255
@@ -141,9 +161,9 @@ ActiveRecord::Schema.define(version: 20150411045021) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
 
   add_foreign_key "districts", "provinces"
-  add_foreign_key "estudies", "profiles"
   add_foreign_key "experiences", "profiles"
   add_foreign_key "profiles", "users"
   add_foreign_key "provinces", "countries"
+  add_foreign_key "studies", "profiles"
   add_foreign_key "townships", "districts"
 end

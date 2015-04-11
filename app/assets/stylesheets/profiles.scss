@@ -1,3 +1,23 @@
 // Place all the styles related to the Profiles controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.avatar-container {
+  text-align: center;
+}
+
+.avatar-container img {
+  border: 5px solid #fff;
+  box-shadow: 0 0 10px rgba(0,0,0,.15);
+}
+
+.avatar-container h3 {
+  text-shadow: 1px 2px 0 #e8e8e8;
+}
+
+.profile-intro {
+  padding-top: 30px;
+  font-size: 17px;
+  font-weight: lighter;
+}

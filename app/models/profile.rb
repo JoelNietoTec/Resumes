@@ -1,4 +1,6 @@
 class Profile < ActiveRecord::Base
+
+  #Relaciones
   belongs_to :user
   belongs_to :sex
   belongs_to :marital_status
@@ -6,7 +8,20 @@ class Profile < ActiveRecord::Base
   belongs_to :district
   belongs_to :township
   belongs_to :country
-  mount_uploader :avatar, AvatarUploader
   has_many :experiences, -> { order "begin_date DESC" }
+  has_many :studies, -> { order "begin_year DESC" }
+
+  #Uploader
+  mount_uploader :avatar, AvatarUploader
+
+  # Nested Attributes
   accepts_nested_attributes_for :experiences, allow_destroy: true
+  accepts_nested_attributes_for :studies, allow_destroy: true
+  validates_associated :experiences
+  validates_associated :studies
+
+  #Validaciones
+  acts_as_ordered_taggable_on :skills
+  validates :surnames, :forenames, :email, :professional_title, :address, :presentation, presence: { message: 'Completa este campo' }
+  validates :wage_aspiration, numericality: { message: 'Este campo debe ser un número' }
 end

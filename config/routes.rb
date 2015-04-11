@@ -1,9 +1,8 @@
 Rails.application.routes.draw do
 
-  resources :estudies
-  resources :profiles do
-    resources :experiences
-  end
+  resources :studies
+  resources :experiences
+  resources :profiles
 
   resources :users
   get 'welcome/index'

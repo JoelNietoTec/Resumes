@@ -1,4 +1,4 @@
-.col-lg-8.center-block
+.col-lg-11.center-block
   = simple_nested_form_for(@profile) do |f|
     .panel
       .panel-body
@@ -27,7 +27,7 @@
           .col-lg-6
             = f.input :wage_aspiration, input_html: { class: 'input-lg' }, label: 'Aspiración Salarial', placeholder: 'Salario mensual deseado'
           .col-lg-6
-            = f.input :skills, input_html: { class: 'input-lg' }, label: 'Habilidades', placeholder: 'Habilidades separadas por coma...'
+            = f.input :skill_list, input_html: { class: 'input-lg', data:{ role:'tagsinput' }, value: @profile.skill_list.join(",") }, label: 'Habilidades', placeholder: 'Habilidades separadas por coma...'
           .col-lg-12
             = f.input :professional_title, input_html: { class: 'input-lg' }, label: 'Título Profesional', placeholder: 'Ejem: "Administrador", "Analista", "Contador"'
           = f.hidden_field :country_id, :value => '169'
@@ -68,14 +68,44 @@
           .col-lg-12
             = exp.association :professional_area, collection: ProfessionalArea.order(:name), include_blank: false, input_html: { class: 'input-lg' }, label: 'Area'
           .col-lg-6
-            = exp.input :starting_salary, label: "Salario Inicial", placeholder: 'Primer salario devengado', input_html: { class: 'input-lg' }
+            = exp.input :starting_salary, label: "Salario Inicial", placeholder: 'Primer salario mensual devengado', input_html: { class: 'input-lg' }
           .col-lg-6
-            = exp.input :final_salary, label: "Salario Final", placeholder: 'Último salario devengado', input_html: { class: 'input-lg' }
+            = exp.input :final_salary, label: "Salario Final", placeholder: 'Último mensual salario devengado', input_html: { class: 'input-lg' }
           .col-lg-6
             = exp.input :begin_date, as: :string, label: "Fecha de Ingreso", input_html: { class:  "input-lg datepicker" }, placeholder: 'Fecha de ingreso al empleo'
           .col-lg-6
             = exp.input :end_date, as: :string, label: 'Fecha de Salida', input_html: { class: "input-lg datepicker" }, placeholder: "Fecha de salida del empleo"
           .col-lg-12
             = exp.input :job_description, input_html: { class: 'input-lg', rows: '5' }, label: 'Descripción de Funciones'
+    %br
+    %fieldset
+      %legend
+        %h1 Educación
+    = f.link_to_add :studies, :class => "btn btn-lg btn-primary" do
+      = fa_icon 'plus', class: "text-success"
+      Agregar Estudio
+    %br
+    %br
+    = f.simple_fields_for :studies do |stu|
+      .panel
+        .panel-body
+          .elimina
+            = stu.link_to_remove do
+              .btn.btn-danger
+                Eliminar
+          .col-lg-12
+            = stu.input :institution, label: 'Institución', placeholder: 'Casa de estudios', input_html: { class: 'input-lg' }
+          .col-lg-12
+            = stu.input :title, label: 'TÍtulo', placeholder: 'Título Obtenido', input_html: { class: "input-lg" }
+          .col-lg-6
+            = stu.association :professional_area, collection: ProfessionalArea.order(:name), include_blank: false, input_html: { class: 'input-lg' }, label: 'Area Professional'
+          .col-lg-6
+            = stu.association :education_level, include_blank: false, input_html: { class: 'input-lg' }, label: 'Nivel Educativo'
+          .col-lg-5
+            = stu.input :begin_year, collection: 1950..Date.today.year, label: "Año de Ingreso", prompt: 'Seleccionar año de inicio', input_html: { class: 'input-lg' }
+          .col-lg-5
+            = stu.input :end_year, collection: 1950..Date.today.year + 5, label: "Año de Finalización", prompt: 'Seleccionar año de finalización', input_html: { class: 'input-lg' }
+          .col-lg-2
+            = stu.input :finished, input_html: { class: 'input-lg' }, label_html: { class: 'control-label' }, label: 'Finalizado?'
     .form-actions
       = f.button :submit, "Salvar Perfil", class: 'btn-lg btn-primary'

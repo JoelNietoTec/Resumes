@@ -1,6 +1,6 @@
-class CreateEstudies < ActiveRecord::Migration
+class CreateStudies < ActiveRecord::Migration
   def change
-    create_table :estudies do |t|
+    create_table :studies do |t|
       t.references :profile, index: true, foreign_key: true
       t.string :institution
       t.string :title

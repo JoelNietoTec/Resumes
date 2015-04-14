@@ -12,6 +12,7 @@
  *
  *= require_tree .
  *= require bootstrap-wysihtml5
+ *= require font-awesome
  *= require_self
  */
 
@@ -21,4 +22,8 @@
 
 .elimina {
   text-align: right;
+}
+
+body {
+  background-color: #fafafa;
 }

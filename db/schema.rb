@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150411160458) do
+ActiveRecord::Schema.define(version: 20150414033455) do
 
   create_table "countries", force: :cascade do |t|
     t.string   "name",         limit: 255
@@ -32,6 +32,12 @@ ActiveRecord::Schema.define(version: 20150411160458) do
   add_index "districts", ["province_id"], name: "index_districts_on_province_id", using: :btree
 
   create_table "education_levels", force: :cascade do |t|
+    t.string   "name",       limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  create_table "educative_areas", force: :cascade do |t|
     t.string   "name",       limit: 255
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
@@ -107,16 +113,16 @@ ActiveRecord::Schema.define(version: 20150411160458) do
   end
 
   create_table "studies", force: :cascade do |t|
-    t.integer  "profile_id",           limit: 4
-    t.string   "institution",          limit: 255
-    t.string   "title",                limit: 255
-    t.integer  "education_level_id",   limit: 4
-    t.integer  "professional_area_id", limit: 4
-    t.integer  "begin_year",           limit: 4
-    t.integer  "end_year",             limit: 4
-    t.boolean  "finished",             limit: 1
-    t.datetime "created_at",                       null: false
-    t.datetime "updated_at",                       null: false
+    t.integer  "profile_id",         limit: 4
+    t.string   "institution",        limit: 255
+    t.string   "title",              limit: 255
+    t.integer  "education_level_id", limit: 4
+    t.integer  "begin_year",         limit: 4
+    t.integer  "end_year",           limit: 4
+    t.boolean  "finished",           limit: 1
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+    t.integer  "educative_area_id",  limit: 4
   end
 
   add_index "studies", ["profile_id"], name: "index_studies_on_profile_id", using: :btree

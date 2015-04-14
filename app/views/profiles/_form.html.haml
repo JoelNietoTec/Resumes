@@ -23,7 +23,7 @@
           .col-lg-3
             = f.input :phone_number, input_html: { class: 'input-lg' }, label: 'Teléfono', placeholder: 'Nro. de Teléfono'
           .col-lg-6
-            = f.input :nationality_id, collection: Country.all, value_method: :id, label_method: :title, selected: '169', input_html: { class: 'input-lg' }, label: 'Nacionalidad'
+            = f.input :nationality_id, collection: Country.order(:esp_name), value_method: :id, label_method: :esp_title, selected: '169', input_html: { class: 'input-lg' }, label: 'Nacionalidad'
           .col-lg-6
             = f.input :wage_aspiration, input_html: { class: 'input-lg' }, label: 'Aspiración Salarial', placeholder: 'Salario mensual deseado'
           .col-lg-6
@@ -98,7 +98,7 @@
           .col-lg-12
             = stu.input :title, label: 'TÍtulo', placeholder: 'Título Obtenido', input_html: { class: "input-lg" }
           .col-lg-6
-            = stu.association :professional_area, collection: ProfessionalArea.order(:name), include_blank: false, input_html: { class: 'input-lg' }, label: 'Area Professional'
+            = stu.association :educative_area, collection: EducativeArea.order(:name), id_method: 'id', label_method: 'title', include_blank: false, input_html: { class: 'input-lg' }, label: 'Area Professional'
           .col-lg-6
             = stu.association :education_level, include_blank: false, input_html: { class: 'input-lg' }, label: 'Nivel Educativo'
           .col-lg-5

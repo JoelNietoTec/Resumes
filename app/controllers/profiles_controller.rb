@@ -76,7 +76,7 @@ class ProfilesController < ApplicationController
           :id, :company, :position, :professional_area_id, :starting_salary, :final_salary, :begin_date, :end_date, :job_description, :_destroy
           ],
         studies_attributes: [
-          :id, :institution, :title, :education_level_id, :professional_area_id, :begin_year, :end_year, :finished, :_destroy
+          :id, :institution, :title, :education_level_id, :educative_area_id, :begin_year, :end_year, :finished, :_destroy
           ]
         )
     end

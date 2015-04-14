@@ -1,71 +1,101 @@
 .col-lg-10
-  .well.col-lg-12#profile-header
+  .col-lg-12.profile-container#profile-header
     .col-lg-3.avatar-container
       = image_tag @profile.avatar.url(:avatar), :class => "img-circle"
-      %h3
+      %h2
         = @profile.forenames
         = @profile.surnames
       %p
         = @profile.professional_title.titleize
+      %p
+        = link_to edit_profile_path(@profile), :class => "btn btn-primary btn-lg btn-block" do
+          = fa_icon 'pencil-square-o'
+          Editar
     .col-lg-9.profile-intro
       = (@profile.presentation).html_safe
-  .well.col-lg-12
-    %h3 Información Básica
-    .col
-
-%p
-  %b Forenames:
-  = @profile.forenames
-%p
-  %b Surnames:
-  = @profile.surnames
-%p
-  %b Email:
-  = @profile.email
-%p
-  %b Sex:
-  = @profile.sex_id
-%p
-  %b Marital status:
-  = @profile.marital_status_id
-%p
-  %b Birth date:
-  = @profile.birth_date
-%p
-  %b Professional title:
-  = @profile.professional_title
-%p
-  %b Nationality:
-  = @profile.nationality_id
-%p
-  %b Country:
-  = @profile.country_id
-%p
-  %b Province:
-  = @profile.province_id
-%p
-  %b District:
-  = @profile.district_id
-%p
-  %b Township:
-  = @profile.township_id
-%p
-  %b Address:
-  = @profile.address
-%p
-  %b Phone number:
-  = @profile.phone_number
-%p
-  %b Skills:
-  = @profile.skill_list
-%p
-  %b Wage aspiration:
-  = @profile.wage_aspiration
-%p
-  %b Presentation:
-
-
-
-= link_to 'Edit', edit_profile_path(@profile)
-\|
-= link_to 'Back', profiles_path
+      .col-sm-12.profile-info
+        .col-sm-6
+          %p
+            = fa_icon 'envelope-o'
+            = @profile.email.downcase
+          %p
+            = fa_icon 'phone'
+            = number_to_phone(@profile.phone_number)
+          %p
+            = fa_icon 'venus-mars'
+            = Sex.find(@profile.sex_id).name
+        .col-sm-6
+          %p
+            = fa_icon 'birthday-cake'
+            = @profile.age
+            Años
+          %p
+            = fa_icon 'graduation-cap'
+            = @profile.max_education.nil? ? 'No Disponible' :EducationLevel.find(@profile.max_education).name
+          %p{ :alt => 'Aspiración Salarial' }
+            = fa_icon 'money'
+            - if @profile.wage_aspiration
+              = number_to_currency(@profile.wage_aspiration)
+            - else
+              No Disponible
+      .col-sm-12
+        = fa_icon 'map-marker'
+        = District.find(@profile.district_id).title
+        ,
+        = Township.find(@profile.township_id).title
+        ,
+        = @profile.address.titleize
+  .col-lg-12.profile-container#skills-container
+    %h2
+      = fa_icon 'bolt'
+      Habilidades
+    - @profile.skill_list.each do |skill|
+      %span.label.label-primary.skill-label
+        = skill
+  - if @profile.experiences
+    .col-lg-12.profile-container#experiences-container
+      %h2
+        = fa_icon 'suitcase'
+        Experiencia
+      - @profile.experiences.sort{|a, b| b.begin_date <=> a.begin_date}.each_with_index do |experience, index|
+        %fieldset
+          %legend
+            %h3
+              = experience.position.titleize
+          %h4.text-muted
+            = experience.company.titleize
+            \|
+            = experience.begin_date.strftime("%d/%m/%y")
+            \-
+            = experience.end_date? ? experience.end_date.strftime("%d/%m/%y") :'Actualmente'
+            \(
+            = experience.work_time
+            \)
+          %p
+            = fa_icon 'building-o'
+            = ProfessionalArea.find(experience.professional_area_id).name
+          %p.text-silver
+            = h(experience.job_description).gsub(/\n/, '<br>').html_safe
+  - if @profile.studies
+    .col-lg-12.profile-container#studies-container
+      %h2
+        = fa_icon 'graduation-cap'
+        Estudios
+      - @profile.studies.sort{|a, b| b.begin_year <=> a.begin_year}.each_with_index do |study, index|
+        %fieldset
+          %legend
+            %h3
+              = study.title.titleize
+              = fa_icon 'check', :class => 'text-success' if study.finished
+          %h4.text-muted
+            = study.institution.titleize
+            \|
+            = study.begin_year
+            \-
+            = study.end_year if study.end_year
+          %p
+            = fa_icon 'graduation-cap'
+            = EducationLevel.find(study.education_level_id).name
+          %p
+            = fa_icon 'university'
+            = EducativeArea.find(study.educative_area_id).name.titleize

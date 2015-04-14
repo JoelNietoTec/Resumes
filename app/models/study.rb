@@ -1,6 +1,6 @@
 class Study < ActiveRecord::Base
   belongs_to :profile
-  belongs_to :professional_area
+  belongs_to :educative_area
   belongs_to :education_level
 
   validates :institution, presence: { message: 'Completa este campo' }

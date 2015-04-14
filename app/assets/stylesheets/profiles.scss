@@ -18,6 +18,50 @@
 
 .profile-intro {
   padding-top: 30px;
-  font-size: 17px;
+  font-size: 14px;
   font-weight: lighter;
+}
+
+.profile-info {
+  margin-top: 30px;
+  font-size: 15px;
+  color: #696969;
+}
+
+.skill-label {
+  margin: 8px 4px 8px 4px;
+  font-size: 16px;
+  display: inline-block;
+  border-bottom: solid 5px ;
+  border-color: #127ba3;
+}
+
+#profile-header {
+  border-top: solid 4px #127ba3;
+}
+
+#skills-container {
+
+  border-top: solid 4px #bababa;
+}
+
+#experiences-container {
+  border-top: solid 4px #23a127;
+}
+
+#studies-container {
+  border-top: solid 4px #ff291c;
+}
+
+.profile-container fieldset {
+  margin-top: 30px;
+}
+
+.profile-container {
+  background-color: #fff;
+  padding: 20px 30px 30px 30px;
+  margin: 35px;
+  display: block;
+  border-radius: 5px;
+  border: 2px solid #bababa;
 }

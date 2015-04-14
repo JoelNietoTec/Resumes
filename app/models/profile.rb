@@ -22,6 +22,18 @@ class Profile < ActiveRecord::Base
 
   #Validaciones
   acts_as_ordered_taggable_on :skills
-  validates :surnames, :forenames, :email, :professional_title, :address, :presentation, presence: { message: 'Completa este campo' }
+  validates :surnames, :forenames, :email, :professional_title, :address, :birth_date, :presentation, presence: { message: 'Completa este campo' }
   validates :wage_aspiration, numericality: { message: 'Este campo debe ser un número' }
+
+  #Funciones
+  def age
+    age = Date.today.year - self.birth_date.year
+    age -= 1 if Date.today < self.birth_date + age.year
+    age
+  end
+
+  def max_education
+    Study.where("profile_id = ?", self.id).maximum(:education_level_id)
+  end
+
 end

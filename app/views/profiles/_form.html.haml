@@ -4,6 +4,7 @@
       .panel-body
         = f.error_notification
         .form-inputs
+          = f.hidden_field :user_id
           .col-lg-6
             = f.input :forenames, label: 'Nombres', placeholder: 'Tus nombres...', input_html: { class: 'input-lg' }
           .col-lg-6

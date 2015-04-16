@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150415125110) do
+ActiveRecord::Schema.define(version: 20150416022100) do
 
   create_table "countries", force: :cascade do |t|
     t.string   "name",         limit: 255
@@ -171,6 +171,22 @@ ActiveRecord::Schema.define(version: 20150415125110) do
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+
+  create_table "vacants", force: :cascade do |t|
+    t.string   "position",             limit: 255
+    t.integer  "professional_area_id", limit: 4
+    t.integer  "country_id",           limit: 4
+    t.integer  "province_id",          limit: 4
+    t.integer  "district_id",          limit: 4
+    t.string   "keywords",             limit: 255
+    t.date     "due_date"
+    t.integer  "job_type_id",          limit: 4
+    t.float    "wage_offer",           limit: 24
+    t.text     "job_description",      limit: 65535
+    t.boolean  "active",               limit: 1
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
+  end
 
   add_foreign_key "districts", "provinces"
   add_foreign_key "experiences", "profiles"

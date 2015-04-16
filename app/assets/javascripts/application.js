@@ -15,7 +15,8 @@
 //= require jquery_ujs
 //= require bootstrap-wysihtml5
 //= require bootstrap-wysihtml5/locales/es-ES
-//= require_tree .
+//= require_tree ./shared
+//= require_self
 
 $(function() {
   $(".datepicker").datepicker({

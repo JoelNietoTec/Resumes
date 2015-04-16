@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :vacants
   resources :studies
   resources :experiences
   resources :profiles

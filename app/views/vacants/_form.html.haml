@@ -1,0 +1,19 @@
+.col-lg-8.center-block
+  = simple_form_for(@vacant) do |f|
+    = f.error_notification
+
+    .form-inputs
+      = f.input :position
+      = f.association :professional_area
+      = f.input :country_id
+      = f.input :province_id
+      = f.input :district_id
+      = f.input :keywords
+      = f.input :due_date
+      = f.association :job_type
+      = f.input :wage_offer
+      = f.input :job_description, as: :wysihtml5
+      = f.input :active
+
+    .form-actions
+      = f.button :submit

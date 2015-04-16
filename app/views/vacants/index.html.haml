@@ -1,0 +1,41 @@
+%h1 Listing vacants
+
+%table
+  %thead
+    %tr
+      %th Position
+      %th Professional area
+      %th Country
+      %th Province
+      %th District
+      %th Keywords
+      %th Due date
+      %th Job type
+      %th Wage offer
+      %th Job description
+      %th Active
+      %th
+      %th
+      %th
+
+  %tbody
+    - @vacants.each do |vacant|
+      %tr
+        %td= vacant.position
+        %td= vacant.professional_area_id
+        %td= vacant.country_id
+        %td= vacant.province_id
+        %td= vacant.district_id
+        %td= vacant.keywords
+        %td= vacant.due_date
+        %td= vacant.job_type_id
+        %td= vacant.wage_offer
+        %td= vacant.job_description
+        %td= vacant.active
+        %td= link_to 'Show', vacant
+        %td= link_to 'Edit', edit_vacant_path(vacant)
+        %td= link_to 'Destroy', vacant, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Vacant', new_vacant_path

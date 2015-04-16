@@ -28,7 +28,8 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
-        format.html { redirect_to new_profile_path(:user_id => params[@user.id]), notice: 'User was successfully created.' }
+        create_profile
+        format.html { redirect_to edit_profile_path @profile, notice: 'Ya esta registrado como #{@user.email}' }
         format.json { render :show, status: :created, location: @user }
       else
         format.html { render :new }
@@ -61,14 +62,22 @@ class UsersController < ApplicationController
     end
   end
 
-  private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_user
-      @user = User.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def user_params
-      params.require(:user).permit(:email, :password, :password_confirmation)
-    end
+  private
+  # Use callbacks to share common setup or constraints between actions.
+  def set_user
+    @user = User.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def user_params
+    params.require(:user).permit(:email, :password, :password_confirmation)
+  end
+
+  def create_profile
+    @profile = Profile.new
+    @profile.user_id = @user.id
+    @profile.email = @user.email
+    @profile.save
+  end
 end

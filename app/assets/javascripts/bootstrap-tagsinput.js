@@ -3,7 +3,7 @@
 
   var defaultOptions = {
     tagClass: function(item) {
-      return 'label label-primary';
+      return 'label label-primary skill-label';
     },
     itemValue: function(item) {
       return item ? item.toString() : item;

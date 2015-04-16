@@ -22,8 +22,8 @@ class Profile < ActiveRecord::Base
 
   #Validaciones
   acts_as_ordered_taggable_on :skills
-  validates :surnames, :forenames, :email, :professional_title, :address, :birth_date, :presentation, presence: { message: 'Completa este campo' }
-  validates :wage_aspiration, numericality: { message: 'Este campo debe ser un número' }
+  validates :surnames, :forenames, :email, :professional_title, :address, :birth_date, :presentation, presence: { message: 'Completa este campo' }, on: :update
+  validates :wage_aspiration, numericality: { message: 'Este campo debe ser un número' }, on: :update
 
   #Funciones
   def age

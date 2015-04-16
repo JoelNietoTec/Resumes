@@ -1,8 +1,8 @@
 .col-lg-11.center-block
   = simple_nested_form_for(@profile) do |f|
-    .panel
+    = f.error_notification
+    .panel.profile-form-container
       .panel-body
-        = f.error_notification
         .form-inputs
           = f.hidden_field :user_id
           .col-lg-6
@@ -15,19 +15,19 @@
             = f.input :presentation, as: :wysihtml5, input_html: { class: 'input-lg' }, label: 'Presentación'
           .col-lg-6
             = f.input :email, label: 'Correo Electrónico', placeholder: 'tu@dominio.com', input_html: { class: 'input-lg' }
+          .col-lg-6
+            = f.input :phone_number, input_html: { class: 'input-lg' }, label: 'Teléfono', placeholder: 'Nro. de Teléfono'
           .col-lg-3
             = f.association :sex, include_blank: false, input_html: { class: 'input-lg' }, label: 'Sexo'
           .col-lg-3
             = f.association :marital_status, include_blank: false, input_html: { class: 'input-lg' }, label: 'Estado Civil'
-          .col-lg-3
+          .col-lg-6
             = f.input :birth_date, as: :string, input_html: { class: 'datepicker input-lg' }, label: 'Fecha de Nacimiento', placeholder: 'Fecha de Nacimiento...'
-          .col-lg-3
-            = f.input :phone_number, input_html: { class: 'input-lg' }, label: 'Teléfono', placeholder: 'Nro. de Teléfono'
           .col-lg-6
             = f.input :nationality_id, collection: Country.order(:esp_name), value_method: :id, label_method: :esp_title, selected: '169', input_html: { class: 'input-lg' }, label: 'Nacionalidad'
           .col-lg-6
             = f.input :wage_aspiration, input_html: { class: 'input-lg' }, label: 'Aspiración Salarial', placeholder: 'Salario mensual deseado'
-          .col-lg-6
+          .col-lg-12
             = f.input :skill_list, input_html: { class: 'input-lg', data:{ role:'tagsinput' }, value: @profile.skill_list.join(",") }, label: 'Habilidades', placeholder: 'Habilidades separadas por coma...'
           .col-lg-12
             = f.input :professional_title, input_html: { class: 'input-lg' }, label: 'Título Profesional', placeholder: 'Ejem: "Administrador", "Analista", "Contador"'
@@ -56,7 +56,7 @@
     %br
     %br
     = f.simple_fields_for :experiences do |exp|
-      .panel
+      .panel.profile-form-container
         .panel-body
           .elimina
             = exp.link_to_remove do
@@ -88,7 +88,7 @@
     %br
     %br
     = f.simple_fields_for :studies do |stu|
-      .panel
+      .panel.profile-form-container
         .panel-body
           .elimina
             = stu.link_to_remove do

@@ -76,3 +76,5 @@ gem 'simple_form_fancy_uploads'
 gem 'acts-as-taggable-on', '~> 3.4'
 
 gem 'bootstrap-tagsinput-rails'
+
+gem 'select2-rails'

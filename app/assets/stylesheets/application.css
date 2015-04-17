@@ -29,3 +29,34 @@
 body {
   background-color: #fafafa;
 }
+
+.form-actions {
+  margin: 20px 0px 20px 0px;
+}
+
+.actions-container {
+  background: #fff;
+  display: block;
+  padding: 20px 0px 20px 0px;
+  text-align: center;
+  margin: 20px 0px 20px -30px;
+  box-shadow: 0 0 2px 1px rgba(0,0,0,.12);
+  border: 2px solid #bebebe;
+  border-top: 4px solid #127ba3;
+}
+
+.skill-label {
+  margin: 8px 4px 8px 4px;
+  font-size: 16px;
+  display: inline-block;
+  border-bottom: solid 5px ;
+  border-color: #127ba3;
+}
+
+.keyword-label {
+  margin: 8px 4px 8px 4px;
+  font-size: 16px;
+  display: inline-block;
+  border-bottom: solid 5px ;
+  border-color: #ff291c;
+}

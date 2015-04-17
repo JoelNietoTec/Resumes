@@ -69,6 +69,6 @@ class VacantsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def vacant_params
-      params.require(:vacant).permit(:position, :professional_area_id, :country_id, :province_id, :district_id, :keywords, :due_date, :job_type_id, :wage_offer, :job_description, :active)
+      params.require(:vacant).permit(:position, :professional_area_id, :country_id, :province_id, :district_id, :keywords,    :keyword_list, :due_date, :job_type_id, :wage_offer, :job_description, :active)
     end
 end

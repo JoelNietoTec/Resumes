@@ -26,6 +26,17 @@ $(function() {
   });
 });
 
+$(function() {
+  $(".datepicker-future").datepicker({
+    changeYear: true,
+    changeMonth: true,
+    showAnim: "blind",
+    yearRange: "c:c+5",
+  });
+});
+
+
+
 $(document).on('nested:fieldAdded', function(event){
   // this field was just inserted into your form
   var field = event.field;

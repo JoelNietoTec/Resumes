@@ -1,40 +1,29 @@
-%h1 Listing vacants
+%h2 Vacantes
 
-%table
-  %thead
-    %tr
-      %th Position
-      %th Professional area
-      %th Country
-      %th Province
-      %th District
-      %th Keywords
-      %th Due date
-      %th Job type
-      %th Wage offer
-      %th Job description
-      %th Active
-      %th
-      %th
-      %th
 
-  %tbody
-    - @vacants.each do |vacant|
-      %tr
-        %td= vacant.position
-        %td= vacant.professional_area_id
-        %td= vacant.country_id
-        %td= vacant.province_id
-        %td= vacant.district_id
-        %td= vacant.keywords
-        %td= vacant.due_date
-        %td= vacant.job_type_id
-        %td= vacant.wage_offer
-        %td= vacant.job_description
-        %td= vacant.active
-        %td= link_to 'Show', vacant
-        %td= link_to 'Edit', edit_vacant_path(vacant)
-        %td= link_to 'Destroy', vacant, :method => :delete, :data => { :confirm => 'Are you sure?' }
+- @vacants.each do |vacant|
+  .vacant-container
+    .col-lg-4
+      = link_to vacant do
+        %p
+          = fa_icon 'briefcase'
+          = vacant.position
+      %p
+        = fa_icon 'bar-chart'
+        = ProfessionalArea.find(vacant.professional_area_id).name
+    .col-lg-4
+      %p
+        = fa_icon 'map-marker'
+        = Province.find(vacant.province_id).title
+        ,
+        = District.find(vacant.district_id).title
+      %p
+        = fa_icon 'money'
+        = vacant.wage_offer.nil? ? 'Negociable' : number_to_currency(vacant.wage_offer)
+    .col-lg-4
+      %p
+        = fa_icon 'clock-o'
+        = JobType.find(vacant.job_type_id).name
 
 %br
 

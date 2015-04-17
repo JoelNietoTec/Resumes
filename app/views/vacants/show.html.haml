@@ -1,39 +1,41 @@
-%p#notice= notice
+.col-lg-8.center-block
+  .vacant-form-container
+    %h2
+      = fa_icon 'briefcase'
+      = @vacant.position
+    %p.published
+      = fa_icon 'calendar'
+      = spanish_date @vacant.created_at
+      \(
+      = time_ago @vacant.created_at
+      \)
+    %p
+      = fa_icon 'bar-chart'
+      = ProfessionalArea.find(@vacant.professional_area_id).name
+      \|
+      = fa_icon 'clock-o'
+      = JobType.find(@vacant.job_type_id).name
+    %p
+      = fa_icon 'map-marker'
+      = Province.find(@vacant.province_id).title
+      ,
+      = District.find(@vacant.district_id).title
+    %p
+      = fa_icon 'money'
+      = @vacant.wage_offer.nil? ? 'Negociable' :number_to_currency(@vacant.wage_offer)
+    %fieldset
+      %legend
+        = fa_icon 'bolt'
+        Habilidades Requeridas
+      - @vacant.keyword_list.each do |skill|
+        %span.label.label-danger.keyword-label
+          = skill
+    %fieldset
+      %legend
+        = fa_icon 'list-ul'
+        Descripción de Funciones
+      = (@vacant.job_description).html_safe
 
-%p
-  %b Position:
-  = @vacant.position
-%p
-  %b Professional area:
-  = @vacant.professional_area_id
-%p
-  %b Country:
-  = @vacant.country_id
-%p
-  %b Province:
-  = @vacant.province_id
-%p
-  %b District:
-  = @vacant.district_id
-%p
-  %b Keywords:
-  = @vacant.keywords
-%p
-  %b Due date:
-  = @vacant.due_date
-%p
-  %b Job type:
-  = @vacant.job_type_id
-%p
-  %b Wage offer:
-  = @vacant.wage_offer
-%p
-  %b Job description:
-  = @vacant.job_description
-%p
-  %b Active:
-  = @vacant.active
-
-= link_to 'Edit', edit_vacant_path(@vacant)
-\|
-= link_to 'Back', vacants_path
+    = link_to 'Edit', edit_vacant_path(@vacant)
+    \|
+    = link_to 'Back', vacants_path

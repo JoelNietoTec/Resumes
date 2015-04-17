@@ -1,5 +1,8 @@
-.col-lg-11.center-block
-  = simple_nested_form_for(@profile) do |f|
+= simple_nested_form_for(@profile) do |f|
+  .col-lg-2.hidden-md.hidden-sm.hidden-xs.hidden-print
+    .form-actions.affix.actions-container.col-lg-2
+      = f.button :submit, "Guardar Perfil", class: 'btn-primary'
+  .col-lg-10
     = f.error_notification
     .panel.profile-form-container
       .panel-body
@@ -108,5 +111,6 @@
             = stu.input :end_year, collection: 1950..Date.today.year + 5, label: "Año de Finalización", prompt: 'Seleccionar año de finalización', input_html: { class: 'input-lg' }
           .col-lg-2
             = stu.input :finished, input_html: { class: 'input-lg' }, label_html: { class: 'control-label' }, label: 'Finalizado?'
+  .col-md-12.hidden-lg
     .form-actions
-      = f.button :submit, "Salvar Perfil", class: 'btn-lg btn-primary'
+      = f.button :submit, "Guardar Perfil", class: 'btn-lg btn-block btn-primary'

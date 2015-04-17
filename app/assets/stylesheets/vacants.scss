@@ -1,3 +1,36 @@
 // Place all the styles related to the Vacants controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.vacant-form-container {
+  background-color: #fff;
+  padding: 20px 30px 30px 30px;
+  margin: 20px 0px 20px 0px;
+  display: block;
+  box-shadow: 0 0 2px 1px rgba(0,0,0,.12);
+  border: 2px solid #bebebe;
+  border-top: 4px solid #ff291c;
+}
+
+.vacant-form-container h1, h2, h3 {
+  font-weight: lighter;
+}
+
+.vacant-form-container h2 {
+  text-align: center;
+}
+
+.published {
+  color: #575757;
+  text-align: center;
+}
+
+.vacant-form-container fieldset {
+  margin: 20px 0px 20px 0px;
+}
+
+.vacant-container {
+  background-color: #fff;
+  display: block;
+  padding: 20px 30px 30px 30px;
+}

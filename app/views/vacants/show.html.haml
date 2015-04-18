@@ -12,17 +12,19 @@
     %p
       = fa_icon 'bar-chart'
       = ProfessionalArea.find(@vacant.professional_area_id).name
-      \|
-      = fa_icon 'clock-o'
-      = JobType.find(@vacant.job_type_id).name
     %p
-      = fa_icon 'map-marker'
-      = Province.find(@vacant.province_id).title
-      ,
-      = District.find(@vacant.district_id).title
+      %i
+        = fa_icon 'map-marker'
+        = Province.find(@vacant.province_id).title
+        ,
+        = District.find(@vacant.district_id).title
     %p
-      = fa_icon 'money'
-      = @vacant.wage_offer.nil? ? 'Negociable' :number_to_currency(@vacant.wage_offer)
+      %b
+        = fa_icon 'money'
+        = @vacant.wage_offer.nil? ? 'Negociable' :number_to_currency(@vacant.wage_offer)
+        \|
+        = fa_icon 'clock-o'
+        = JobType.find(@vacant.job_type_id).name
     %fieldset
       %legend
         = fa_icon 'bolt'
@@ -32,7 +34,7 @@
           = skill
     %fieldset
       %legend
-        = fa_icon 'list-ul'
+        = fa_icon 'list-alt'
         Descripción de Funciones
       = (@vacant.job_description).html_safe
 

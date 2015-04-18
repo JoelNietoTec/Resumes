@@ -1,30 +1,33 @@
-%h2 Vacantes
+.col-lg-9.center-block
+  %h2 Vacantes
+  - @vacants.sort{|a, b| b.created_at <=> a.created_at}.each do |vacant|
+    = link_to vacant do
+      .col-lg-12.vacant-container
+        .col-lg-6
+          %p
+            %b
+              = fa_icon 'briefcase'
+              = vacant.position
+          %p
+            = fa_icon 'bar-chart'
+            = ProfessionalArea.find(vacant.professional_area_id).name
+        .col-lg-3.hidden-md.hidden-sm.hidden-xs
+          %p
+            = fa_icon 'map-marker'
+            = Province.find(vacant.province_id).title
+            ,
+            = District.find(vacant.district_id).title
+          %p
+            = fa_icon 'money'
+            = vacant.wage_offer.nil? ? 'Negociable' : number_to_currency(vacant.wage_offer)
+        .col-lg-3.hidden-md.hidden-sm.hidden-xs
+          %p
+            = fa_icon 'clock-o'
+            = JobType.find(vacant.job_type_id).name
+          %i
+            = fa_icon 'calendar'
+            = time_ago vacant.created_at
 
+  %br
 
-- @vacants.each do |vacant|
-  .vacant-container
-    .col-lg-4
-      = link_to vacant do
-        %p
-          = fa_icon 'briefcase'
-          = vacant.position
-      %p
-        = fa_icon 'bar-chart'
-        = ProfessionalArea.find(vacant.professional_area_id).name
-    .col-lg-4
-      %p
-        = fa_icon 'map-marker'
-        = Province.find(vacant.province_id).title
-        ,
-        = District.find(vacant.district_id).title
-      %p
-        = fa_icon 'money'
-        = vacant.wage_offer.nil? ? 'Negociable' : number_to_currency(vacant.wage_offer)
-    .col-lg-4
-      %p
-        = fa_icon 'clock-o'
-        = JobType.find(vacant.job_type_id).name
-
-%br
-
-= link_to 'New Vacant', new_vacant_path
+  = link_to 'New Vacant', new_vacant_path

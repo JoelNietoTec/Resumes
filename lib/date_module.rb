@@ -48,6 +48,50 @@ module DateModule
     distance
   end
 
+  def time_ago_new fecha
+    distance = ""
+    seconds = Time.now - fecha
+    minutes = (seconds)/60
+    hours = (minutes)/60
+    days = (hours)/24
+    if minutes < 1
+      distance = minutes
+      distance = "Hace #{distance} minutos"
+    elsif hours < 24
+      distance = hours
+      if distance = 1
+        distance = "Hace una hora"
+      else
+        distance = "Hace #{distance} horas"
+      end
+    elsif days < 7
+      distance = (Date.today.day - fecha.day)
+      if distance = 1
+        distance = "Ayer"
+      else
+        distance = "Hace #{distance} días"
+      end
+    elsif days < 31
+      distance = days/7
+      if distance = 1
+        distance = "La semana pasada"
+      else
+        distance = "Hace #{distance} semanas"
+      end
+    elsif days < 365
+      distance = days/30
+      if distance = 1
+        distance = "Hace un mes"
+      else
+        distance = "Hace #{distance} meses"
+      end
+    else
+      distance = distance/365
+      distance = "Hace #{distance} años"
+    end
+    distance
+  end
+
   def time_elapsed start_date, end_date
     distance = ""
     year_text = ""

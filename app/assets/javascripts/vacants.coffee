@@ -20,3 +20,19 @@ jQuery ->
     else
       $('#district_select').html("No Disponible")
     district = $('#district_select :selected').val()
+# Filter
+  districts_filter = $('#district-filter').html();
+  $(document).ready ->
+    province_filter  = $('#province-filter :selected').val()
+    options = $(districts_filter).filter("optgroup[label='#{province_filter}']").html()
+    if options
+      $('#district-filter').html("<option value> -Todos- </option>" + options)
+    else
+      $('#district-filter').html("<option value> -Todos- </option>")
+  $('#province-filter').change ->
+    province_filter  = $('#province-filter :selected').val()
+    options = $(districts_filter).filter("optgroup[label='#{province_filter}']").html()
+    if options
+      $('#district-filter').html("<option value> -Todos- </option>" + options)
+    else
+      $('#district-filter').html("<option value> -Todos- </option>")

@@ -4,7 +4,22 @@ class VacantsController < ApplicationController
   # GET /vacants
   # GET /vacants.json
   def index
-    @vacants = Vacant.all
+    @filterrific = initialize_filterrific(
+      Vacant,
+      params[:filterrific],
+      :select_options => {
+        with_district_id: District.options_for_select,
+        with_province_id: Province.all,
+        with_job_type_id: JobType.all,
+        with_professional_area_id: ProfessionalArea.all
+      }
+    ) or return
+    @vacants = @filterrific.find.page(params[:page])
+
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   # GET /vacants/1

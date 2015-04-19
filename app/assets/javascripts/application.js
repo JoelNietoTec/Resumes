@@ -16,6 +16,7 @@
 //= require bootstrap-wysihtml5
 //= require bootstrap-wysihtml5/locales/es-ES
 //= require_tree ./shared
+//= require filterrific/filterrific-jquery
 //= require_self
 
 $(function() {

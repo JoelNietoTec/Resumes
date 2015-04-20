@@ -27,4 +27,5 @@
           %i
             = fa_icon 'calendar'
             = time_ago_new vacant.created_at
-= will_paginate vacants, renderer: BootstrapPagination::Rails
+  #paginater
+    = will_paginate @vacants, renderer: BootstrapPagination::Rails

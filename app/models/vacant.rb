@@ -14,7 +14,7 @@ class Vacant < ActiveRecord::Base
       :with_professional_area_id
     ]
   )
-
+  self.per_page = 10
   scope :with_province_id, lambda { |province_ids|
     where(:province_id => [*province_ids])
   }

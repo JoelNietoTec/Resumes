@@ -9,12 +9,23 @@
     = javascript_include_tag "application", params[:controller], 'data-turbolinks-track' => true
     = csrf_meta_tags
   %body
-    %nav.navbar.navbar-default.navbar-fixed-top
+    %nav.navbar.navbar-inverse.navbar-fixed-top
       .container-fluid
         #navbar-main.navbar-collapse.collapse{ "aria-expanded" => "false", "style" => "height: 1px;"}
           %ul.nav.navbar-right.navbar-nav
             %li
+              = link_to 'Inicio', root_url
+            %li
               = link_to 'Ver Vacantes', vacants_path
+            %li
+              = link_to 'Iniciar Sesión', :controller => 'welcome', :action => 'login'
+            %li
+              = link_to 'Registrar mi Resume', new_user_path
     = custom_bootstrap_flash
     .container
       = yield
+    %footer.footer-banner
+      .container-fluid
+        %h4.text-white
+          = fa_icon 'copyright'
+          2015 AnderSoft Solutions - Derechos Reservados

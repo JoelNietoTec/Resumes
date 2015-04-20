@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
 
   def create
     if @user
-      redirect_to root_url , :success => "Sesión Iniciada"
+      redirect_back_or_to root_url, :success => "Sesión Iniciada"
     else
       redirect_to root_url, :alert => 'Email y/o password incorrectos'
     end

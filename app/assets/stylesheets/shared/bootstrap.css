@@ -1136,9 +1136,9 @@ img {
   background-color: #ffffff;
   border: 1px solid #eeeeee;
   border-radius: 4px;
-  -webkit-transition: all 0.2s ease-in-out;
-  -o-transition: all 0.2s ease-in-out;
-  transition: all 0.2s ease-in-out;
+  -webkit-transition: all 0.5s ease-in-out;
+  -o-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
   display: inline-block;
   max-width: 100%;
   height: auto;
@@ -4513,11 +4513,24 @@ fieldset[disabled] .navbar-default .btn-link:focus {
 }
 .navbar-inverse .navbar-nav > li > a {
   color: #999999;
+  margin: 10px 5px 10px 5px;
+  border: 3px solid #fff;
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease;
 }
 .navbar-inverse .navbar-nav > li > a:hover,
 .navbar-inverse .navbar-nav > li > a:focus {
   color: #333333;
   background-color: transparent;
+  margin: 10px 5px 10px 5px;
+  border: 3px solid #333333;
+  border-radius: 5px;
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease;
 }
 .navbar-inverse .navbar-nav > .active > a,
 .navbar-inverse .navbar-nav > .active > a:hover,
@@ -4907,9 +4920,9 @@ a.badge:focus {
   background-color: #ffffff;
   border: 1px solid #eeeeee;
   border-radius: 4px;
-  -webkit-transition: border 0.2s ease-in-out;
-  -o-transition: border 0.2s ease-in-out;
-  transition: border 0.2s ease-in-out;
+  -webkit-transition: border 0.5s ease-in-out;
+  -o-transition: border 0.5s ease-in-out;
+  transition: border 0.5s ease-in-out;
 }
 .thumbnail > img,
 .thumbnail a > img {
@@ -6802,9 +6815,9 @@ label {
   margin-top: 6px;
   border-color: #e7e7e7;
   color: #333333;
-  -webkit-transition: all 0.2s ease-in-out;
-  -o-transition: all 0.2s ease-in-out;
-  transition: all 0.2s ease-in-out;
+  -webkit-transition: all 0.5s ease-in-out;
+  -o-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
 }
 .nav-tabs > li > a:hover,
 .nav-tabs > li > a:focus,

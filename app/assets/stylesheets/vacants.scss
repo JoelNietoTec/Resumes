@@ -35,7 +35,6 @@
   display: block;
   padding: 20px 30px 20px 30px;
   border: 1px solid #969696;
-  border-left: 4px solid #40b5e3;
   border-radius: 3px;
   box-shadow: 0 0 2px 1px rgba(0,0,0,.12);
 }
@@ -49,10 +48,9 @@ a .vacant-container {
 }
 
 a .vacant-container:hover {
-  font-size: 110%;
-  padding-top: 25px;
+  border-left: 4px solid #40b5e3;
+  background-color: #fcfcfc;
   text-decoration: none;
-  padding-bottom: 25px;
   -webkit-transition: all 0.2s ease;
   -moz-transition: all 0.2s ease;
   -o-transition: all 0.2s ease;

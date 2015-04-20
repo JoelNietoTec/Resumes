@@ -5,3 +5,30 @@
 body {
   background: #75caeb;
 }
+
+.login-title {
+  margin-top: 50px;
+  text-align: center;
+}
+
+.login-title h1, h2, h3 {
+  margin: 5px;
+  font-weight: lighter;
+}
+
+.login-title h1 {
+  font-size: 50px;
+  text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.25);
+}
+
+.login-container {
+  margin-top: 20px;
+  margin-bottom: 40px;
+  background-color: #fff;
+  display: block;
+  padding: 20px 30px 20px 30px;
+  border: 1px solid #969696;
+  border-top: 6px solid #40b5e3;
+  border-radius: 5px;
+  box-shadow: 0 0 2px 1px rgba(0,0,0,.12);
+}

@@ -51,36 +51,36 @@ module DateModule
   def time_ago_new fecha
     distance = ""
     seconds = Time.now - fecha
-    minutes = (seconds)/60
-    hours = (minutes)/60
-    days = (hours)/24
-    if minutes < 1
+    minutes = ((seconds)/60).to_i
+    hours = ((minutes)/60).to_i
+    days = (Date.today.day - fecha.day).to_i
+    if minutes < 60
       distance = minutes
       distance = "Hace #{distance} minutos"
     elsif hours < 24
       distance = hours
-      if distance = 1
+      if distance == 1
         distance = "Hace una hora"
       else
         distance = "Hace #{distance} horas"
       end
     elsif days < 7
-      distance = (Date.today.day - fecha.day)
-      if distance = 1
+      distance = days
+      if distance == 1
         distance = "Ayer"
       else
         distance = "Hace #{distance} días"
       end
     elsif days < 31
       distance = days/7
-      if distance = 1
+      if distance == 1
         distance = "La semana pasada"
       else
         distance = "Hace #{distance} semanas"
       end
     elsif days < 365
       distance = days/30
-      if distance = 1
+      if distance == 1
         distance = "Hace un mes"
       else
         distance = "Hace #{distance} meses"

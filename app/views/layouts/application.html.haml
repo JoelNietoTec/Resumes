@@ -1,11 +1,20 @@
 !!!
 %html
   %head
-    %title Resumes
+    %title
+      Resumes
+      \|
+      = @title
     = stylesheet_link_tag "application", params[:controller], :media => "screen", 'data-turbolinks-track' => true
     = javascript_include_tag "application", params[:controller], 'data-turbolinks-track' => true
     = csrf_meta_tags
   %body
+    %nav.navbar.navbar-default.navbar-fixed-top
+      .container-fluid
+        #navbar-main.navbar-collapse.collapse{ "aria-expanded" => "false", "style" => "height: 1px;"}
+          %ul.nav.navbar-right.navbar-nav
+            %li
+              = link_to 'Ver Vacantes', vacants_path
     = custom_bootstrap_flash
     .container
       = yield

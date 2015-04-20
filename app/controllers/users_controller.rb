@@ -25,11 +25,10 @@ class UsersController < ApplicationController
   # POST /users.json
   def create
     @user = User.new(user_params)
-
     respond_to do |format|
       if @user.save
-        create_profile
-        format.html { redirect_to edit_profile_path @profile, notice: 'Ya esta registrado como #{@user.email}' }
+        auto_login(@user)
+        format.html { redirect_to new_profile_path, notice: 'Ya esta registrado como #{@user.email}' }
         format.json { render :show, status: :created, location: @user }
       else
         format.html { render :new }

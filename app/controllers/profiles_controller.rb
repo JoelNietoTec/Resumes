@@ -16,6 +16,7 @@ class ProfilesController < ApplicationController
 
   # GET /profiles/new
   def new
+    @title = current_user.email
     @profile = Profile.new
   end
 

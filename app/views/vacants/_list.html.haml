@@ -3,19 +3,20 @@
     = link_to vacant do
       .col-lg-12.vacant-container
         .col-lg-6
-          %p
+          %p.text-info
             %b
               = fa_icon 'briefcase'
               = vacant.position
-          %p
+          %p.text-warning
             = fa_icon 'bar-chart'
             = ProfessionalArea.find(vacant.professional_area_id).name
         .col-lg-3.hidden-md.hidden-sm.hidden-xs
           %p
-            = fa_icon 'map-marker'
-            = Province.find(vacant.province_id).title
-            ,
-            = District.find(vacant.district_id).title
+            %b
+              = fa_icon 'map-marker'
+              = Province.find(vacant.province_id).title
+              ,
+              = District.find(vacant.district_id).title
           %p
             = fa_icon 'money'
             = vacant.wage_offer.nil? ? 'Negociable' : number_to_currency(vacant.wage_offer)

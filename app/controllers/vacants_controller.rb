@@ -4,6 +4,7 @@ class VacantsController < ApplicationController
   # GET /vacants
   # GET /vacants.json
   def index
+    @title = 'Buscar Vacantes'
     @filterrific = initialize_filterrific(
       Vacant,
       params[:filterrific],
@@ -25,6 +26,7 @@ class VacantsController < ApplicationController
   # GET /vacants/1
   # GET /vacants/1.json
   def show
+    @title = @vacant.position
   end
 
   # GET /vacants/new

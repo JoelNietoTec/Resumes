@@ -9,7 +9,7 @@
   %h3.text-secondary
     %i Encuentra oportunidades
 .col-lg-4.center-block.login-container
-  = simple_form_for :sessions, :url => "sessions" do |f|
+  = simple_form_for :sessions, :url => sessions_path do |f|
     = f.input :email, label: 'Correo Electrónico', placeholder: 'tu@dominio.com'
     = f.input :password, label: 'Contraseña', placeholder: 'Contraseña...'
     = f.button :submit, "Iniciar Sesión", class: 'btn-warning btn-block btn-lg'

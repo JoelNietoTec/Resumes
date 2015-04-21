@@ -28,4 +28,4 @@
             = fa_icon 'calendar'
             = time_ago_new vacant.created_at
   #paginater
-    = will_paginate @vacants, renderer: BootstrapPagination::Rails
+    = will_paginate @vacants, renderer: BootstrapPagination::Rails, :previous_label => '<<', :next_label => '>>'

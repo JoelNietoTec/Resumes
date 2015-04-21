@@ -1,11 +1,18 @@
-.col-lg-4.center-block#register-container
-  %fieldset
-    %legend
-      = fa_icon 'users'
-      Registrar tu
-      %em Resume
+:css
+  body {
+    background-image: url('/assets/Employee.jpg');
+    background-repeat:no-repeat;
+    background-size: cover;
+.col-lg-6.center-block
   = simple_form_for @user do |f|
-    = f.input :email, label: 'Correo Electrónico', placeholder: 'tu@dominio.com'
-    = f.input :password, label: 'Contraseña', placeholder: 'Nueva Contraseña...'
-    = f.input :password_confirmation, label: 'Confirmar contraseña', placeholder: 'Repetir nueva contraseña...'
-    = f.button :submit, "Registrarse", class: 'btn-primary btn-block'
+    = f.error_notification
+    #register-container
+      %fieldset
+        %legend.text-warning
+          = fa_icon 'users'
+          Registrar tu
+          %em Resume
+        = f.input :email, label: 'Correo Electrónico', placeholder: 'tu@dominio.com', input_html: { class: 'input-lg' }
+        = f.input :password, label: 'Contraseña', placeholder: 'Nueva Contraseña...', input_html: { class: 'input-lg' }
+        = f.input :password_confirmation, label: 'Confirmar contraseña', placeholder: 'Repetir nueva contraseña...', input_html: { class: 'input-lg' }
+        = f.button :submit, "Registrarse", class: 'btn-info btn-lg btn-block'

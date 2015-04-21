@@ -41,6 +41,7 @@
 	-webkit-box-shadow: 0 0 12px #999999;
 	-o-box-shadow: 0 0 12px #999999;
 	box-shadow: 0 0 12px #999999;
+  border-radius: 5px;
 	color: #FFFFFF;
 	margin: 0 0 6px;
 	filter: alpha(opacity=80);

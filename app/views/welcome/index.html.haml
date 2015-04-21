@@ -1,1 +1,36 @@
-%h1 Welcome#index
+.col-lg-10.center-block
+  %h2.text-white.title-shadow
+    Últimas Vacantes Publicadas
+    = link_to vacants_path do
+      .btn.btn-lg.btn-warning
+        Ver más
+        = fa_icon 'arrow-right'
+  #last_vacants
+    - @last_vacants.sort{|a, b| b.created_at <=> a.created_at}.each do |vacant|
+      = link_to vacant do
+        .col-lg-12.vacant-container
+          .col-lg-6
+            %p.text-info
+              %b
+                = fa_icon 'briefcase'
+                = vacant.position
+            %p.text-warning
+              = fa_icon 'bar-chart'
+              = ProfessionalArea.find(vacant.professional_area_id).name
+          .col-lg-3.hidden-md.hidden-sm.hidden-xs
+            %p
+              %b
+                = fa_icon 'map-marker'
+                = Province.find(vacant.province_id).title
+                ,
+                = District.find(vacant.district_id).title
+            %p
+              = fa_icon 'money'
+              = vacant.wage_offer.nil? ? 'Negociable' : number_to_currency(vacant.wage_offer)
+          .col-lg-3.hidden-md.hidden-sm.hidden-xs
+            %p
+              = fa_icon 'clock-o'
+              = JobType.find(vacant.job_type_id).name
+            %i
+              = fa_icon 'calendar'
+              = time_ago_new vacant.created_at

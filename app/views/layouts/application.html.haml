@@ -18,14 +18,18 @@
             %li
               = link_to 'Ver Vacantes', vacants_path
             %li
-              = link_to 'Iniciar Sesión', :controller => 'welcome', :action => 'login'
+              = link_to_if(current_user.nil?, 'Iniciar Sesión', { :controller => 'welcome', :action => 'login' }) do
+                = link_to 'Cerrar Sesión', logout_path
             %li
-              = link_to 'Registrar mi Resume', new_user_path
+              = link_to_if(current_user.nil?, 'Registrar mi Resume', new_user_path) do
+                = link_to_if(current_user.user_profile.nil?, 'Actualizar mi Resume', new_profile_path) do
+                  = link_to 'Actualizar Mi Resume', edit_profile_path(current_user.user_profile)
     = custom_bootstrap_flash
     .container
       = yield
     %footer.footer-banner
       .container-fluid
-        %h4.text-white
-          = fa_icon 'copyright'
-          2015 AnderSoft Solutions - Derechos Reservados
+        %h4.text-white.title-shadow
+          %b
+            = fa_icon 'copyright'
+            2015 AnderSoft Solutions - Derechos Reservados

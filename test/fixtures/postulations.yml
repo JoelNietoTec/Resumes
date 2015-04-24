@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  vacant_id:
+  profile_id:
+  postulation_status_id: 1
+
+two:
+  vacant_id:
+  profile_id:
+  postulation_status_id: 1

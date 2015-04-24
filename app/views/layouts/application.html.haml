@@ -10,20 +10,28 @@
     = csrf_meta_tags
   %body
     %nav.navbar.navbar-inverse.navbar-fixed-top
+      .navbar-header
+        = link_to root_url, :class => "navbar-brand" do
+          = image_tag "Resumes.png", :class => "navbar-logo img-responsive"
+        %button.navbar-toggle.collapsed{ "type" => "button", "data-toggle" => "collapse", "data-target" => "#navbar-main", "aria-expanded" => "false" }
+          %span.sr-only Toggle navigation
+          %span.icon-bar
+          %span.icon-bar
+          %span.icon-bar
       .container-fluid
-        #navbar-main.navbar-collapse.collapse{ "aria-expanded" => "false", "style" => "height: 1px;"}
+        #navbar-main.navbar-collapse.collapse{ "aria-expanded" => "false" }
           %ul.nav.navbar-right.navbar-nav
             %li
               = link_to 'Inicio', root_url
             %li
               = link_to 'Ver Vacantes', vacants_path
             %li
+              = link_to_if(current_user.nil?, 'Registrarse', register_path) do
+                = link_to_if(current_user.user_profile.nil?, 'Actualizar mi Resume', new_profile_path) do
+                  = link_to 'Mi Resume', current_user.user_profile
+            %li.alternative
               = link_to_if(current_user.nil?, 'Iniciar Sesión', { :controller => 'welcome', :action => 'login' }) do
                 = link_to 'Cerrar Sesión', logout_path
-            %li
-              = link_to_if(current_user.nil?, 'Registrar mi Resume', new_user_path) do
-                = link_to_if(current_user.user_profile.nil?, 'Actualizar mi Resume', new_profile_path) do
-                  = link_to 'Actualizar Mi Resume', edit_profile_path(current_user.user_profile)
     = custom_bootstrap_flash
     .container
       = yield

@@ -1,7 +1,7 @@
 = simple_nested_form_for(@profile) do |f|
   .col-lg-2.hidden-md.hidden-sm.hidden-xs.hidden-print
     .form-actions.affix.actions-container.col-lg-2
-      = f.button :submit, "Guardar Perfil", class: 'btn-primary'
+      = f.button :submit, "Guardar Perfil", class: 'btn-info'
   .col-lg-10
     = f.error_notification
     .panel.profile-form-container
@@ -53,7 +53,7 @@
     %fieldset
       %legend
         %h1 Experiencias Laborales
-    = f.link_to_add :experiences, :class => "btn btn-lg btn-primary" do
+    = f.link_to_add :experiences, :class => "btn btn-lg btn-info" do
       = fa_icon 'plus', class: "text-success"
       Agregar Experiencia
     %br
@@ -63,7 +63,7 @@
         .panel-body
           .elimina
             = exp.link_to_remove do
-              .btn.btn-danger
+              .btn.btn-warning
                 Eliminar
           .col-lg-12
             = exp.input :position, label: 'Puesto', placeholder: 'Cargo desempeñado', input_html: { class: 'input-lg' }
@@ -85,7 +85,7 @@
     %fieldset
       %legend
         %h1 Educación
-    = f.link_to_add :studies, :class => "btn btn-lg btn-primary" do
+    = f.link_to_add :studies, :class => "btn btn-lg btn-info" do
       = fa_icon 'plus', class: "text-success"
       Agregar Estudio
     %br
@@ -95,7 +95,7 @@
         .panel-body
           .elimina
             = stu.link_to_remove do
-              .btn.btn-danger
+              .btn.btn-warning
                 Eliminar
           .col-lg-12
             = stu.input :institution, label: 'Institución', placeholder: 'Casa de estudios', input_html: { class: 'input-lg' }

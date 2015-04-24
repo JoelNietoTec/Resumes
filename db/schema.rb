@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150416022100) do
+ActiveRecord::Schema.define(version: 20150421131447) do
 
   create_table "countries", force: :cascade do |t|
     t.string   "name",         limit: 255
@@ -70,6 +70,23 @@ ActiveRecord::Schema.define(version: 20150416022100) do
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
   end
+
+  create_table "postulation_statuses", force: :cascade do |t|
+    t.string   "name",       limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  create_table "postulations", force: :cascade do |t|
+    t.integer  "vacant_id",             limit: 4
+    t.integer  "profile_id",            limit: 4
+    t.integer  "postulation_status_id", limit: 4
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
+  end
+
+  add_index "postulations", ["profile_id"], name: "index_postulations_on_profile_id", using: :btree
+  add_index "postulations", ["vacant_id"], name: "index_postulations_on_vacant_id", using: :btree
 
   create_table "professional_areas", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -190,6 +207,8 @@ ActiveRecord::Schema.define(version: 20150416022100) do
 
   add_foreign_key "districts", "provinces"
   add_foreign_key "experiences", "profiles"
+  add_foreign_key "postulations", "profiles"
+  add_foreign_key "postulations", "vacants"
   add_foreign_key "profiles", "users"
   add_foreign_key "provinces", "countries"
   add_foreign_key "studies", "profiles"

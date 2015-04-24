@@ -4,15 +4,13 @@
     background-repeat:no-repeat;
     background-size: cover;
 .col-lg-6.center-block
-  = simple_form_for @user do |f|
+  = minimal_form_for @user do |f|
     = f.error_notification
     #register-container
-      %fieldset
-        %legend.text-warning
-          = fa_icon 'users'
-          Registrar tu
-          %em Resume
-        = f.input :email, label: 'Correo Electrónico', placeholder: 'tu@dominio.com', input_html: { class: 'input-lg' }
-        = f.input :password, label: 'Contraseña', placeholder: 'Nueva Contraseña...', input_html: { class: 'input-lg' }
-        = f.input :password_confirmation, label: 'Confirmar contraseña', placeholder: 'Repetir nueva contraseña...', input_html: { class: 'input-lg' }
-        = f.button :submit, "Registrarse", class: 'btn-info btn-lg btn-block'
+      %h1.text-warning.title-shadow.login-title Comparte tu talento
+      %h3.text-info.title-shadow.login-title
+        %i Encuentra oportunidades
+      = f.input :email, placeholder: 'E-mail', input_html: { class: 'input-lg' }
+      = f.input :password,placeholder: 'Nueva Contraseña...', input_html: { class: 'input-lg' }
+      = f.input :password_confirmation, placeholder: 'Confirmar contraseña...', input_html: { class: 'input-lg' }
+      = f.button :submit, "Registrarse", class: 'btn-info btn-lg btn-block'

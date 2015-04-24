@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
 
-  resources :vacants
+  resources :vacants do
+    collection do
+      get :postulate
+    end
+  end
   resources :studies
   resources :experiences
   resources :profiles
@@ -20,6 +24,8 @@ Rails.application.routes.draw do
   get 'login' => 'sessions#create', as: :login
 
   get 'logout' => 'sessions#destroy', as: :logout
+
+  get 'register' => 'users#new', as: :register
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

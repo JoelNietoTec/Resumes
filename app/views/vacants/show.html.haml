@@ -1,8 +1,9 @@
 .col-lg-8.center-block
   .vacant-form-container
-    %h2
-      = fa_icon 'briefcase'
-      = @vacant.position
+    %h2.text-warning
+      %b
+        = fa_icon 'briefcase'
+        = @vacant.position
     %p.published
       = fa_icon 'calendar'
       = spanish_date @vacant.created_at
@@ -37,7 +38,10 @@
         = fa_icon 'list-alt'
         Descripción de Funciones
       = (@vacant.job_description).html_safe
-
-    = link_to 'Edit', edit_vacant_path(@vacant)
-    \|
-    = link_to 'Back', vacants_path
+    %p.vacant-actions
+      = link_to_if(current_user.nil?, 'Postularme a esta vacante', { :controller => 'welcome', :action => 'login' }, class: 'btn btn-info btn-lg') do
+        = link_to_if(current_user.user_profile.nil?, 'Postularme a esta vacante', new_profile_path, class: 'btn btn-info btn-lg') do
+          = link_to_if(postulated(@vacant.id, current_user.user_profile.id).nil?, 'Postularme a esta vacante', { action: "postulate", :id => params[:id] }, class: 'btn btn-info btn-lg') do
+            %span.btn.btn-lg.btn-success
+              = fa_icon 'check-circle'
+              Postulación enviada

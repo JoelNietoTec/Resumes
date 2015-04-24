@@ -7,9 +7,10 @@
             %b
               = fa_icon 'briefcase'
               = vacant.position
-          %p.text-warning
-            = fa_icon 'bar-chart'
-            = ProfessionalArea.find(vacant.professional_area_id).name
+          - unless (postulated vacant.id, current_user.user_profile.id).nil?
+            %p.text-success
+              = fa_icon 'check-circle'
+              Postulación Enviada
         .col-lg-3.hidden-md.hidden-sm.hidden-xs
           %p
             %b

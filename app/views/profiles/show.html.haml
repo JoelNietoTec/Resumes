@@ -8,7 +8,7 @@
       %p
         = @profile.professional_title.titleize
       %p
-        = link_to edit_profile_path(@profile), :class => "btn btn-primary btn-lg btn-block" do
+        = link_to edit_profile_path(@profile), :class => "btn btn-warning btn-lg btn-block" do
           = fa_icon 'pencil-square-o'
           Editar
     .col-lg-9.profile-intro
@@ -50,7 +50,7 @@
       = fa_icon 'bolt'
       Habilidades
     - @profile.skill_list.each do |skill|
-      %span.label.label-primary.skill-label
+      %span.label.label-info.skill-label
         = skill
   - if @profile.experiences
     .col-lg-12.profile-container#experiences-container

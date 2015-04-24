@@ -4,12 +4,14 @@
     background-repeat:no-repeat;
     background-size: cover;
 
-.col-lg-6.center-block.login-title
-  %h1.text-white Comparte tu talento
-  %h3.text-secondary
+.col-lg-5.center-block.login-container
+  %h1.text-info.title-shadow.login-title Comparte tu talento
+  %h3.text-secondary.text-warning.title-shadow.login-title
     %i Encuentra oportunidades
-.col-lg-4.center-block.login-container
-  = simple_form_for :sessions, :url => sessions_path do |f|
-    = f.input :email, label: 'Correo Electrónico', placeholder: 'tu@dominio.com'
-    = f.input :password, label: 'Contraseña', placeholder: 'Contraseña...'
+  = minimal_form_for :sessions, :url => sessions_path do |f|
+    = f.input :email, placeholder: 'E-mail...', input_html: { class: 'input-lg' }
+    = f.input :password, placeholder: 'Contraseña...', input_html: { class: 'input-lg' }
     = f.button :submit, "Iniciar Sesión", class: 'btn-warning btn-block btn-lg'
+  %p.register-link
+    ¿No tienes cuenta?
+    = link_to "Registrarse", new_user_path

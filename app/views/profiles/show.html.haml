@@ -1,8 +1,8 @@
 .col-lg-10.center-block
   .col-lg-12.profile-container#profile-header
-    .col-lg-3.avatar-container
+    .col-lg-4.avatar-container
       = image_tag @profile.avatar.url(:avatar), :class => "img-circle"
-      %h2
+      %h2.profile-name.title-shadow
         = @profile.forenames
         = @profile.surnames
       %p
@@ -11,7 +11,7 @@
         = link_to edit_profile_path(@profile), :class => "btn btn-warning btn-lg btn-block" do
           = fa_icon 'pencil-square-o'
           Editar
-    .col-lg-9.profile-intro
+    .col-lg-8.profile-intro
       = (@profile.presentation).html_safe
       .col-lg-12.profile-info
         .col-lg-6

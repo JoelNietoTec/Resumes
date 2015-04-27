@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+
   resources :vacants do
     collection do
       get :postulate
@@ -7,7 +8,9 @@ Rails.application.routes.draw do
   end
   resources :studies
   resources :experiences
-  resources :profiles
+  resources :profiles do
+    get 'postulations/index'
+  end
 
   resources :users
   get 'welcome/index'

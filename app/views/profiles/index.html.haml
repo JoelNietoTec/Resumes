@@ -1,55 +1,15 @@
-%h1 Listing profiles
 
-%table
-  %thead
-    %tr
-      %th User
-      %th Forenames
-      %th Surnames
-      %th Email
-      %th Sex
-      %th Marital status
-      %th Birth date
-      %th Professional title
-      %th Nationality
-      %th Country
-      %th Province
-      %th District
-      %th Township
-      %th Address
-      %th Phone number
-      %th Skills
-      %th Wage aspiration
-      %th Presentation
-      %th
-      %th
-      %th
-
-  %tbody
-    - @profiles.each do |profile|
-      %tr
-        %td= profile.user
-        %td= profile.forenames
-        %td= profile.surnames
-        %td= profile.email
-        %td= profile.sex_id
-        %td= profile.marital_status_id
-        %td= profile.birth_date
-        %td= profile.professional_title
-        %td= profile.nationality_id
-        %td= profile.country_id
-        %td= profile.province_id
-        %td= profile.district_id
-        %td= profile.township_id
-        %td= profile.address
-        %td= profile.phone_number
-        %td= profile.skills
-        %td= profile.wage_aspiration
-        %td= profile.presentation
-        %td= link_to 'Show', profile
-        %td= link_to 'Edit', edit_profile_path(profile)
-        %td= link_to 'Destroy', profile, :method => :delete, :data => { :confirm => 'Are you sure?' }
-
-%br
-
-= link_to 'New Profile', new_profile_path
+.col-lg-10.center-block
+  %h1.text-info.title-shadow Candidatos
+  - @profiles.each do |profile|
+    .col-sm-3
+      = link_to profile do
+        .profile-card
+          = image_tag profile.avatar.url(:medium), :class => "profile-avatar"
+          .profile-card-info
+            %p.text-info.profile-card-name
+              = profile.forenames.titleize
+              %span.text-warning
+                = profile.surnames.titleize
+            %p.text-muted
+              = profile.professional_title.titleize

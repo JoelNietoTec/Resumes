@@ -29,7 +29,7 @@ class UsersController < ApplicationController
     respond_to do |format|
       if @user.save
         auto_login(@user)
-        format.html { redirect_to new_profile_path, notice: 'Ya esta registrado como #{@user.email}' }
+        format.html { redirect_to new_profile_path, success: 'Registro Exitoso' }
         format.json { render :show, status: :created, location: @user }
       else
         format.html { render :new }

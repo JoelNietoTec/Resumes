@@ -3,14 +3,14 @@
     = link_to vacant do
       .col-lg-12.vacant-container
         .col-lg-6
-          %p.text-info
-            %b
-              = fa_icon 'briefcase'
-              = vacant.position
-          - unless (postulated vacant.id, current_user.user_profile.id).nil?
-            %p.text-success
-              = fa_icon 'check-circle'
-              Postulación Enviada
+          %h4.text-info
+            = fa_icon 'briefcase'
+            = vacant.position
+          - if current_user
+            - unless (postulated vacant.id, current_user.user_profile.id).nil?
+              %p.text-success
+                = fa_icon 'check-circle'
+                Postulación Enviada
         .col-lg-3.hidden-md.hidden-sm.hidden-xs
           %p
             %b

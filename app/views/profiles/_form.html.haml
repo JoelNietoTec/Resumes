@@ -7,7 +7,7 @@
     .panel.profile-form-container
       .panel-body
         .form-inputs
-          = f.hidden_field :user_id
+          = f.hidden_field :user_id, :value => current_user.id
           .col-lg-6
             = f.input :forenames, label: 'Nombres', placeholder: 'Tus nombres...', input_html: { class: 'input-lg' }
           .col-lg-6

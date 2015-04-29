@@ -1,7 +1,7 @@
 .col-lg-10.center-block
   .col-lg-12.profile-container#profile-header
     .col-lg-4.avatar-container
-      = image_tag @profile.avatar.url(:avatar), :class => "img-circle"
+      = image_tag @profile.avatar.url(:medium), :class => "img-circle"
       %h2.profile-name.title-shadow
         = @profile.forenames
         = @profile.surnames

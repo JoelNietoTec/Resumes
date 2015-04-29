@@ -10,6 +10,7 @@
             %p.text-info.profile-card-name
               = profile.forenames.titleize
               %span.text-warning
-                = profile.surnames.titleize
+                = "#{profile.surnames.titleize},"
+              = profile.age
             %p.text-muted
               = profile.professional_title.titleize

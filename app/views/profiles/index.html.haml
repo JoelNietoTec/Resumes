@@ -1,16 +1,11 @@
 
 .col-lg-10.center-block
   %h1.text-info.title-shadow Candidatos
-  - @profiles.each do |profile|
-    .col-sm-3
-      = link_to profile do
-        .profile-card
-          = image_tag profile.avatar.url(:medium), :class => "profile-avatar"
-          .profile-card-info
-            %p.text-info.profile-card-name
-              = profile.forenames.titleize
-              %span.text-warning
-                = "#{profile.surnames.titleize},"
-              = profile.age
-            %p.text-muted
-              = profile.professional_title.titleize
+  %br
+  = form_for_filterrific @filterrific do |f|
+    .alert.alert-info.col-lg-12
+      .col-lg-12
+        %label.search-label
+          Buscar
+        = f.text_field :search_query, :class => 'filterrific-periodically-observed form-control'
+  = render( partial: 'profiles/list', locals: { profiles: @profiles } )

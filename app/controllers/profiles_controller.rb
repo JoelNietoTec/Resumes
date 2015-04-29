@@ -6,8 +6,22 @@ class ProfilesController < ApplicationController
 
 
   def index
-    @profiles = Profile.all
-  end
+    @filterrific = initialize_filterrific(
+      Profile,
+      params[:filterrific]
+      ) or return
+    @profiles = @filterrific.find.page(params[:page])
+
+    respond_to do |format|
+      format.html
+      format.js
+    end
+
+    rescue ActiveRecord::RecordNotFound => e
+      # There is an issue with the persisted param_set. Reset it.
+      puts "Had to reset filterrific params: #{ e.message }"
+      redirect_to(reset_filterrific_url(format: :html)) and return
+    end
 
   # GET /profiles/1
   # GET /profiles/1.json

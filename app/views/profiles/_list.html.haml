@@ -1,0 +1,14 @@
+#results
+  - @profiles.each do |profile|
+    .col-sm-3
+      = link_to profile do
+        .profile-card
+          = image_tag profile.avatar.url(:medium), :class => "profile-avatar"
+          .profile-card-info
+            %p.text-info.profile-card-name
+              = profile.forenames.titleize
+              %span.text-warning
+                = "#{profile.surnames.titleize},"
+              = profile.age
+            %p.text-muted
+              = profile.professional_title.titleize

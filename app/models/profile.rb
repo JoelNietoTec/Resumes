@@ -36,4 +36,35 @@ class Profile < ActiveRecord::Base
     Study.where("profile_id = ?", self.id).maximum(:education_level_id)
   end
 
+  filterrific(
+    available_filters: [
+      :search_query
+      ]
+    )
+
+  scope :search_query, lambda { |query|
+
+    return nil  if query.blank?
+
+    terms = query.downcase.split(/\s+/)
+
+    terms = terms.map { |e|
+      (e.gsub('*', '%') + '%').gsub(/%+/, '%')
+      }
+
+    num_or_conds = 4
+    where(
+      terms.map { |term|
+        %( id in (SELECT profiles.id from profiles, taggings, tags
+          WHERE taggings.taggable_id = profiles.id
+          AND tags.id = taggings.tag_id
+          AND LOWER(tags.name) LIKE ?
+          OR LOWER(profiles.forenames) LIKE ?
+          OR LOWER(profiles.surnames) LIKE ?
+          OR LOWER(profiles.professional_title) LIKE ?))
+        }.join(' AND '),
+      *terms.map { |e| [e] * num_or_conds }.flatten
+      )
+    }
+
 end

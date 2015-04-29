@@ -49,7 +49,7 @@ class Profile < ActiveRecord::Base
     terms = query.downcase.split(/\s+/)
 
     terms = terms.map { |e|
-      (e.gsub('*', '%') + '%').gsub(/%+/, '%')
+      '%' + (e.gsub('*', '%') + '%').gsub(/%+/, '%')
       }
 
     num_or_conds = 4
@@ -57,6 +57,7 @@ class Profile < ActiveRecord::Base
       terms.map { |term|
         %( id in (SELECT profiles.id from profiles, taggings, tags
           WHERE taggings.taggable_id = profiles.id
+          AND taggings.taggable_type = "Profile"
           AND tags.id = taggings.tag_id
           AND LOWER(tags.name) LIKE ?
           OR LOWER(profiles.forenames) LIKE ?

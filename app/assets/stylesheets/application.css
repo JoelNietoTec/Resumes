@@ -45,8 +45,12 @@
   text-align: right;
 }
 
+.search-label {
+  font-weight: bold;
+}
+
 body {
-  background-color: #fafafa;
+  background-image: url('/assets/whitediamond.png');
 }
 
 .form-actions {
@@ -56,9 +60,10 @@ body {
 .actions-container {
   background: #fff;
   display: block;
+  border-radius: 5px;
   padding: 20px 0px 20px 0px;
   text-align: center;
-  margin: 20px 0px 20px -30px;
+  margin: 20px 0px 20px -80px;
   box-shadow: 0 0 2px 1px rgba(0,0,0,.12);
   border: 2px solid #bebebe;
   border-top: 4px solid #5fc1e8;

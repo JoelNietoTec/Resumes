@@ -36,6 +36,8 @@ class Profile < ActiveRecord::Base
     Study.where("profile_id = ?", self.id).maximum(:education_level_id)
   end
 
+  self.per_page = 16
+
   filterrific(
     available_filters: [
       :search_query,
@@ -48,6 +50,7 @@ class Profile < ActiveRecord::Base
 
   scope :search_query, lambda { |query|
     return nil  if query.blank?
+    query = query.gsub(/,/, ' ')
     terms = query.downcase.split(/\s+/)
     terms = terms.map { |e|
       '%' + (e.gsub('*', '%') + '%').gsub(/%+/, '%')

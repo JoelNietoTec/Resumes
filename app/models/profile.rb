@@ -38,34 +38,58 @@ class Profile < ActiveRecord::Base
 
   filterrific(
     available_filters: [
-      :search_query
+      :search_query,
+      :with_education_level,
+      :with_province_id,
+      :with_district_id,
+      :with_professional_area
       ]
     )
 
   scope :search_query, lambda { |query|
-
     return nil  if query.blank?
-
     terms = query.downcase.split(/\s+/)
-
     terms = terms.map { |e|
       '%' + (e.gsub('*', '%') + '%').gsub(/%+/, '%')
-      }
-
+    }
     num_or_conds = 4
     where(
       terms.map { |term|
-        %( id in (SELECT profiles.id from profiles, taggings, tags
+        %( id IN (SELECT profiles.id FROM profiles, taggings, tags
           WHERE taggings.taggable_id = profiles.id
           AND taggings.taggable_type = "Profile"
           AND tags.id = taggings.tag_id
-          AND LOWER(tags.name) LIKE ?
+          AND (LOWER(tags.name) LIKE ?
           OR LOWER(profiles.forenames) LIKE ?
           OR LOWER(profiles.surnames) LIKE ?
-          OR LOWER(profiles.professional_title) LIKE ?))
+          OR LOWER(profiles.professional_title) LIKE ?)))
         }.join(' AND '),
       *terms.map { |e| [e] * num_or_conds }.flatten
       )
     }
+
+  scope :with_education_level, lambda { |education_level_id|
+    where([
+      %( id IN (select profile_id FROM studies
+        WHERE studies.education_level_id >= ? )
+      ), education_level_id
+    ])
+  }
+
+  scope :with_province_id, lambda { |province_ids|
+    where(:province_id => [*province_ids])
+  }
+
+  scope :with_district_id, lambda { |district_ids|
+    where(:district_id => [*district_ids])
+  }
+
+  scope :with_professional_area, lambda { |professional_area_id|
+    where([
+      %( id IN (SELECT profile_id FROM experiences
+      WHERE professional_area_id = ? )
+      ), professional_area_id
+    ])
+  }
 
 end

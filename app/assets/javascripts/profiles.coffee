@@ -37,3 +37,19 @@ jQuery ->
       $('#township_select').html(options)
     else
       $('#township_select').html("No Disponible")
+  # Filter
+  districts_filter = $('#district-filter').html();
+  $(document).ready ->
+    province_filter  = $('#province-filter :selected').val()
+    options = $(districts_filter).filter("optgroup[label='#{province_filter}']").html()
+    if options
+      $('#district-filter').html("<option value> -Todos- </option>" + options)
+    else
+      $('#district-filter').html("<option value> -Todos- </option>")
+  $('#province-filter').change ->
+    province_filter  = $('#province-filter :selected').val()
+    options = $(districts_filter).filter("optgroup[label='#{province_filter}']").html()
+    if options
+      $('#district-filter').html("<option value> -Todos- </option>" + options)
+    else
+      $('#district-filter').html("<option value> -Todos- </option>")

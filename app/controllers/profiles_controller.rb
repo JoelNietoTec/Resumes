@@ -8,7 +8,13 @@ class ProfilesController < ApplicationController
   def index
     @filterrific = initialize_filterrific(
       Profile,
-      params[:filterrific]
+      params[:filterrific],
+      :select_options => {
+        with_education_level: EducationLevel.all,
+        with_district_id: District.options_for_select,
+        with_province_id: Province.all,
+        with_professional_area: ProfessionalArea.all
+        }
       ) or return
     @profiles = @filterrific.find.page(params[:page])
 

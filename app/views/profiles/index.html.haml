@@ -1,11 +1,33 @@
 
 .col-lg-10.center-block
-  %h1.text-info.title-shadow Candidatos
+  %h1.text-warning.title-shadow Candidatos
   %br
   = form_for_filterrific @filterrific do |f|
-    .alert.alert-info.col-lg-12
-      .col-lg-12
+    .alert.alert-warning.col-lg-12
+      .col-lg-6.form-group
         %label.search-label
-          Buscar
-        = f.text_field :search_query, :class => 'filterrific-periodically-observed form-control'
+          Palabras Clave
+        = f.text_field :search_query, :class => 'filterrific-periodically-observed form-control', :placeholder => 'Habilidades, títulos profesionales, nombres'
+      .col-lg-3.form-group
+        %label.search-label
+          Nivel Educativo
+        = f.collection_select :with_education_level, EducationLevel.all, :id, :name, { :include_blank => '-Todos-'}, :class => 'form-control'
+      .col-lg-3.form-group
+        %label.search-label
+          Sector
+        = f.collection_select :with_professional_area, ProfessionalArea.order(:name), :id, :name, { :include_blank => '-Todos-'}, :class => 'form-control'
+      .col-lg-3.form-group
+        %label.search-label
+          Provincia
+        = f.collection_select :with_province_id, Province.all, :id, :title, { :include_blank => '-Todas-'}, { :class => 'form-control', :id => 'province-filter'}
+      .col-lg-3.form-group
+        %label.search-label
+          Distrito
+        = f.grouped_collection_select :with_district_id, Province.all, :districts, :id, :id, :title, { :include_blank => '-Todos-'}, { :class => 'form-control', :id => 'district-filter'}
+      .col-lg-12.form-group
+        = link_to( reset_filterrific_url, ) do
+          .btn.btn-info.btn-lg
+            = fa_icon 'refresh'
+            Restablecer Filtros
+        = render_filterrific_spinner
   = render( partial: 'profiles/list', locals: { profiles: @profiles } )

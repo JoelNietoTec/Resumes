@@ -6,6 +6,7 @@ class ProfilesController < ApplicationController
 
 
   def index
+    @title = 'Buscar Candidatos'
     @filterrific = initialize_filterrific(
       Profile,
       params[:filterrific],
@@ -32,6 +33,7 @@ class ProfilesController < ApplicationController
   # GET /profiles/1
   # GET /profiles/1.json
   def show
+    @title = "#{@profile.forenames} #{@profile.surnames}"
   end
 
   # GET /profiles/new

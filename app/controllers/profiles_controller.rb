@@ -14,7 +14,8 @@ class ProfilesController < ApplicationController
         with_education_level: EducationLevel.all,
         with_district_id: District.options_for_select,
         with_province_id: Province.all,
-        with_professional_area: ProfessionalArea.all
+        with_professional_area: ProfessionalArea.all,
+        with_educative_area: EducativeArea.options_for_select
         }
       ) or return
     @profiles = @filterrific.find.page(params[:page])

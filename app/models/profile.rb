@@ -44,7 +44,8 @@ class Profile < ActiveRecord::Base
       :with_education_level,
       :with_province_id,
       :with_district_id,
-      :with_professional_area
+      :with_professional_area,
+      :with_educative_area
       ]
     )
 
@@ -92,6 +93,14 @@ class Profile < ActiveRecord::Base
       %( id IN (SELECT profile_id FROM experiences
       WHERE professional_area_id = ? )
       ), professional_area_id
+    ])
+  }
+
+  scope :with_educative_area, lambda { |educative_area_id|
+    where([
+      %( id IN (SELECT profile_id FROM studies
+      WHERE educative_area_id = ? )
+      ), educative_area_id
     ])
   }
 

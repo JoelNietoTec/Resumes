@@ -30,7 +30,7 @@
                 = link_to_if(current_user.user_profile.nil?, 'Actualizar mi Resume', new_profile_path) do
                   = link_to 'Mi Resume', current_user.user_profile
             %li.alternative
-              = link_to_if(current_user.nil?, 'Iniciar Sesión', { :controller => 'welcome', :action => 'login' }) do
+              = link_to_if(current_user.nil?, 'Iniciar Sesión', signin_path ) do
                 = link_to 'Cerrar Sesión', logout_path
     = custom_bootstrap_flash
     .container

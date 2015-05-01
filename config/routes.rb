@@ -30,6 +30,8 @@ Rails.application.routes.draw do
 
   get 'register' => 'users#new', as: :register
 
+  get 'signin' => 'welcome#login', as: :signin
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

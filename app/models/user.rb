@@ -12,4 +12,24 @@ class User < ActiveRecord::Base
     Profile.where("user_id = ?", self.id).first
   end
 
+  def is_admin?
+    if self.role_id == 1 then true
+    else
+      false
+    end
+  end
+
+  def is_candidate?
+    if self.role_id == 2 then true
+    else
+      false
+    end
+  end
+
+  def is_company?
+    if self.role_id == 3 then true
+    else
+      false
+    end
+  end
 end

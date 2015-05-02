@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150421131447) do
+ActiveRecord::Schema.define(version: 20150502024958) do
 
   create_table "countries", force: :cascade do |t|
     t.string   "name",         limit: 255
@@ -129,6 +129,13 @@ ActiveRecord::Schema.define(version: 20150421131447) do
 
   add_index "provinces", ["country_id"], name: "index_provinces_on_country_id", using: :btree
 
+  create_table "roles", force: :cascade do |t|
+    t.string   "name",        limit: 255
+    t.string   "description", limit: 255
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+  end
+
   create_table "sexes", force: :cascade do |t|
     t.string   "name",       limit: 255
     t.datetime "created_at",             null: false
@@ -185,9 +192,11 @@ ActiveRecord::Schema.define(version: 20150421131447) do
     t.string   "salt",             limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "role_id",          limit: 4
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["role_id"], name: "index_users_on_role_id", using: :btree
 
   create_table "vacants", force: :cascade do |t|
     t.string   "position",             limit: 255
@@ -213,4 +222,5 @@ ActiveRecord::Schema.define(version: 20150421131447) do
   add_foreign_key "provinces", "countries"
   add_foreign_key "studies", "profiles"
   add_foreign_key "townships", "districts"
+  add_foreign_key "users", "roles"
 end

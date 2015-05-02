@@ -9,3 +9,5 @@ EducationLevel.create([{ name: 'Primario '}, { name: 'Secundario' }, { name: 'Ba
 JobType.create ([{ name: 'Tiempo Completo' }, { name: 'Tiempo Parcial' }, { name: 'Por Contrato' }, { name: 'Temporal' }, { name: 'Pasantía' }, { name: 'Fin de Semana' }, { name: 'Freelance' }, { name: 'Por Horas' }])
 
 PostulationStatus.create([{ name: 'Enviada' }, { name: 'Revisada' }, { name: 'Pre-Seleccionada' }, { name: 'Seleccionada' }])
+
+Role.create([{ name: 'admin', description: 'Administrador' }, { name: 'candidate', description: 'Candidato' }, { name: 'company', description: 'Empresa' }])

@@ -32,6 +32,10 @@ Rails.application.routes.draw do
 
   get 'signin' => 'welcome#login', as: :signin
 
+
+  namespace :company do
+    resources :candidates
+  end
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

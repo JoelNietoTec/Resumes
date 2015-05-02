@@ -1,22 +1,22 @@
 module DateModule
   def spanish_date date
     mes = ""
-    if date.is_a? Date
-      mes = case date.month
-        when 1 then "enero"
-        when 2 then "febrero"
-        when 3 then "marzo"
-        when 4 then "abril"
-        when 5 then "mayo"
-        when 6 then "junio"
-        when 7 then "julio"
-        when 8 then "agosto"
-        when 9 then "septiembre"
-        when 10 then "octubre"
-        when 11 then "noviembre"
-        when 12 then "diciembre"
-      end
+    mes = case date.month
+      when 1 then "enero"
+      when 2 then "febrero"
+      when 3 then "marzo"
+      when 4 then "abril"
+      when 5 then "mayo"
+      when 6 then "junio"
+      when 7 then "julio"
+      when 8 then "agosto"
+      when 9 then "septiembre"
+      when 10 then "octubre"
+      when 11 then "noviembre"
+      when 12 then "diciembre"
+      else 'error'
     end
+
     "#{date.day} de #{mes} de #{date.year}"
   end
 
@@ -30,14 +30,14 @@ module DateModule
       distance = "Hace #{distance} meses"
     elsif Date.today.strftime("%U").to_i - fecha.strftime("%U").to_i >= 1
       distance = Date.today.strftime("%U").to_i - fecha.strftime("%U").to_i
-      if distance = 1
+      if distance == 1
         distance = "La semana pasada"
       else
         distance = "Hace #{distance} semanas"
       end
     elsif Date.today.day - fecha.day >= 1
       distance = Date.today.day - fecha.day
-      if distance = 1
+      if distance == 1
         distance = "Ayer"
       else
         distance = "Hace #{distance} días"
@@ -53,7 +53,7 @@ module DateModule
     seconds = Time.now - fecha
     minutes = ((seconds)/60).to_i
     hours = ((minutes)/60).to_i
-    days = (Date.today.day - fecha.day).to_i
+    days = ((hours)/24).to_i
     if minutes < 60
       distance = minutes
       distance = "Hace #{distance} minutos"

@@ -11,7 +11,32 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150502024958) do
+ActiveRecord::Schema.define(version: 20150502192115) do
+
+  create_table "companies", force: :cascade do |t|
+    t.string   "name",            limit: 255
+    t.integer  "industry_id",     limit: 4
+    t.integer  "company_type_id", limit: 4
+    t.text     "extract",         limit: 65535
+    t.integer  "country_id",      limit: 4
+    t.string   "contact_name",    limit: 255
+    t.string   "phones",          limit: 255
+    t.string   "website",         limit: 255
+    t.string   "logo",            limit: 255
+    t.string   "email",           limit: 255
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
+    t.integer  "user_id",         limit: 4
+  end
+
+  add_index "companies", ["user_id"], name: "index_companies_on_user_id", using: :btree
+
+  create_table "company_types", force: :cascade do |t|
+    t.string   "name",        limit: 255
+    t.string   "description", limit: 255
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+  end
 
   create_table "countries", force: :cascade do |t|
     t.string   "name",         limit: 255
@@ -58,6 +83,12 @@ ActiveRecord::Schema.define(version: 20150502024958) do
   end
 
   add_index "experiences", ["profile_id"], name: "index_experiences_on_profile_id", using: :btree
+
+  create_table "industries", force: :cascade do |t|
+    t.string   "name",       limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
 
   create_table "job_types", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -214,6 +245,7 @@ ActiveRecord::Schema.define(version: 20150502024958) do
     t.datetime "updated_at",                         null: false
   end
 
+  add_foreign_key "companies", "users"
   add_foreign_key "districts", "provinces"
   add_foreign_key "experiences", "profiles"
   add_foreign_key "postulations", "profiles"

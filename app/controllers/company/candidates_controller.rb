@@ -1,4 +1,4 @@
-class Company::CandidatesController < ApplicationController
+class Company::CandidatesController < Company::BaseController
   before_action :set_profile, only: [:show, :edit, :update, :destroy]
 
   # GET /profiles

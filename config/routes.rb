@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
 
+  resources :companies
   resources :vacants do
     collection do
       get :postulate
@@ -35,6 +36,7 @@ Rails.application.routes.draw do
 
   namespace :company do
     resources :candidates
+    root :to => 'welcome#index'
   end
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

@@ -11,3 +11,11 @@ JobType.create ([{ name: 'Tiempo Completo' }, { name: 'Tiempo Parcial' }, { name
 PostulationStatus.create([{ name: 'Enviada' }, { name: 'Revisada' }, { name: 'Pre-Seleccionada' }, { name: 'Seleccionada' }])
 
 Role.create([{ name: 'admin', description: 'Administrador' }, { name: 'candidate', description: 'Candidato' }, { name: 'company', description: 'Empresa' }])
+
+
+CompanyType.create([
+  { name: 'Microempresa', description: 'Poseen hasta 10 trabajadores' },
+  { name: 'Pequeña Empresa', description: 'Poseen entre 11 y 49 trabajadores' },
+  { name: 'Mediana Empresa', description: 'Poseen entre 50 y 250 trabajadores' },
+  { name: 'Gran Empresa', description: 'Tienen más de 250 trabajadores' }
+  ])

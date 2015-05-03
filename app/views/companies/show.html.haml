@@ -1,0 +1,36 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @company.name
+%p
+  %b Industry:
+  = @company.industry_id
+%p
+  %b Company type:
+  = @company.company_type_id
+%p
+  %b Extract:
+  = @company.extract
+%p
+  %b Country:
+  = @company.country_id
+%p
+  %b Contact name:
+  = @company.contact_name
+%p
+  %b Phones:
+  = @company.phones
+%p
+  %b Website:
+  = @company.website
+%p
+  %b Logo:
+  = @company.logo
+%p
+  %b Email:
+  = @company.email
+
+= link_to 'Edit', edit_company_path(@company)
+\|
+= link_to 'Back', companies_path

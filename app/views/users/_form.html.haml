@@ -10,6 +10,7 @@
       %h1.text-warning.title-shadow.login-title Comparte tu talento
       %h3.text-info.title-shadow.login-title
         %i Encuentra oportunidades
+      = f.hidden_field :role_id, :value => "2"
       = f.input :email, placeholder: 'E-mail', input_html: { class: 'input-lg' }
       = f.input :password,placeholder: 'Nueva Contraseña...', input_html: { class: 'input-lg' }
       = f.input :password_confirmation, placeholder: 'Confirmar contraseña...', input_html: { class: 'input-lg' }

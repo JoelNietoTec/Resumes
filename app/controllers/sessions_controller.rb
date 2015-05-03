@@ -9,7 +9,11 @@ class SessionsController < ApplicationController
 
   def create
     if @user
-      redirect_to root_url, :success => "Sesión Iniciada"
+      if @user.is_candidate?
+        redirect_to root_url, :success => "Sesión Iniciada"
+      elsif @user.is_company
+        redirect_to company_root_url, :success => 'Bienvenido'
+      end
     else
       redirect_to :back, :alert => 'Email y/o password incorrectos'
     end

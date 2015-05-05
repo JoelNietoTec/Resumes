@@ -33,6 +33,9 @@ Rails.application.routes.draw do
 
   get 'signin' => 'welcome#login', as: :signin
 
+  get 'empresas' => 'company/welcome#index', as: :empresas
+
+  get 'candidatos' => 'company/candidates#index', as: :candidatos
 
   namespace :company do
     resources :candidates

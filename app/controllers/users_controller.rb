@@ -16,6 +16,7 @@ class UsersController < ApplicationController
   def new
     @title = 'Registro en Resume'
     @user = User.new
+    @user.build_profile
   end
 
   # GET /users/1/edit
@@ -29,7 +30,7 @@ class UsersController < ApplicationController
     respond_to do |format|
       if @user.save
         auto_login(@user)
-        format.html { redirect_to new_profile_path, success: 'Registro Exitoso' }
+        format.html { redirect_to edit_profile_path(@user.user_profile), success: 'Registro Exitoso' }
         format.json { render :show, status: :created, location: @user }
       else
         format.html { render :new }
@@ -71,7 +72,9 @@ class UsersController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def user_params
-    params.require(:user).permit(:email, :password, :password_confirmation, :role_id)
+    params.require(:user).permit(:email, :password, :password_confirmation, :role_id,
+      profile_attributes: [:id, :forenames, :surnames
+        ])
   end
 
 end

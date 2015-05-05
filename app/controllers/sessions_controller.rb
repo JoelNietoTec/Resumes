@@ -10,7 +10,7 @@ class SessionsController < ApplicationController
   def create
     if @user
       if @user.is_candidate?
-        redirect_to root_url, :success => "Sesión Iniciada"
+        redirect_to root_url, :flash => { :success => "Bienvenido, #{@user.user_profile.forenames}!" }
       elsif @user.is_company
         redirect_to company_root_url, :success => 'Bienvenido'
       end

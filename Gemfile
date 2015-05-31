@@ -78,3 +78,5 @@ gem 'acts-as-taggable-on', '~> 3.4'
 gem 'bootstrap-tagsinput-rails'
 
 gem 'select2-rails'
+
+gem 'friendly_id', '~> 5.1.0'

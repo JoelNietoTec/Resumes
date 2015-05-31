@@ -1,4 +1,8 @@
 class Vacant < ActiveRecord::Base
+
+  extend FriendlyId
+  friendly_id :position, use: :slugged
+
   belongs_to :professional_area
   belongs_to :job_type
   acts_as_ordered_taggable_on :keywords

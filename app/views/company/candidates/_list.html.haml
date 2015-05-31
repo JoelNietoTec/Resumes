@@ -11,4 +11,4 @@
                 = "#{profile.surnames.titleize},"
               = profile.age
             %p.text-muted
-              = profile.professional_title.titleize
+              = profile.professional_title? ? profile.professional_title.titleize: 'Desconocido'

@@ -28,8 +28,12 @@ class Profile < ActiveRecord::Base
 
   #Funciones
   def age
-    age = Date.today.year - self.birth_date.year
-    age -= 1 if Date.today < self.birth_date + age.year
+    unless self.birth_date.nil?
+      age = Date.today.year - self.birth_date.year
+      age -= 1 if Date.today < self.birth_date + age.year
+    else
+      age = ''
+    end
     age
   end
 

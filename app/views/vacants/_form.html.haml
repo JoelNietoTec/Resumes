@@ -5,24 +5,25 @@
       = f.error_notification
       .form-inputs
         .col-lg-12
-          = f.input :position, label: 'Cargo', input_html: { class: 'input-lg' }
+          = f.input :position, label: 'Cargo'
         .col-lg-6
-          = f.input :professional_area_id, collection: ProfessionalArea.order(:name), input_html: { class: 'input-lg' }, label: 'Area', include_blank: false
+          = f.input :professional_area_id, collection: ProfessionalArea.order(:name), label: 'Area', include_blank: false
         .col-lg-6
-          = f.association :job_type, label: 'Tipo de Empleo', include_blank: false, input_html: { class: 'input-lg' }
+          = f.association :job_type, label: 'Tipo de Empleo', include_blank: false
         = f.hidden_field :country_id, :value => '169'
         .col-lg-6
-          = f.input :province_id, collection: Province.all, label_method: :title, value_method: :id, label: 'Provincia', include_blank: false, input_html: { class: 'input-lg', id: 'province_select' }
+          = f.input :province_id, collection: Province.all, label_method: :title, value_method: :id, label: 'Provincia', include_blank: false, input_html: { id: 'province_select' }
         .col-lg-6
           = f.input :district_id, label: 'Distrito' do
-            = f.grouped_collection_select :district_id, Province.all, :districts, :id, :id, :title, {}, { :class => 'form-control input-lg', :id => 'district_select' }
+            = f.grouped_collection_select :district_id, Province.all, :districts, :id, :id, :title, {}, { :class => 'form-control', :id => 'district_select' }
         .col-lg-12
-          = f.input :keyword_list, input_html: { class: 'input-lg', data:{ role:'tagsinput' }, value: @vacant.keyword_list.join(",") }, label: 'Habilidades Requeridas', placeholder: 'Habilidades separadas por coma...'
+          = f.input :keyword_list, input_html: { data:{ role:'tagsinput' }, value: @vacant.keyword_list.join(",") }, label: 'Habilidades Requeridas', placeholder: 'Habilidades separadas por coma...'
         .col-lg-6
-          = f.input :due_date, as: :string, input_html: { class: 'datepicker-future input-lg' }, label: 'Fecha de Vencimiento'
+          = f.input :due_date, as: :string, input_html: { class: 'datepicker-future' }, label: 'Fecha de Vencimiento'
         .col-lg-6
-          = f.input :wage_offer, input_html: { class: 'input-lg' }, label: 'Oferta Salarial'
-        = f.input :job_description, as: :wysihtml5, label: 'Descripción de Funciones'
+          = f.input :wage_offer, label: 'Oferta Salarial'
+        .col-lg-12
+          = f.input :job_description, as: :wysihtml5, label: 'Descripción de Funciones'
         = f.hidden_field :active, :value => true
       .form-actions
         = f.button :submit

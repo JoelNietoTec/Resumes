@@ -4,24 +4,19 @@
   %br
   = form_for_filterrific @filterrific do |f|
     .alert.alert-warning.col-lg-12
-      .col-lg-9.form-group
+      .col-lg-12.form-group
         %label.search-label
           Palabras Clave
         = f.text_field :search_query, :class => 'filterrific-periodically-observed form-control', :placeholder => 'Habilidades, títulos profesionales, nombres'
-      .col-lg-3
-        %br
-        %button.btn.btn-lg.btn-info{ :type => 'button', 'data-toggle' => 'collapse', 'data-target' => '#collapseSearch', 'aria-expanded' => 'false', 'aria-controls' => 'collapseSearch' }
-          = fa_icon 'search'
-          Búsqueda Avanzada
       .collapse#collapseSearch
-        .col-lg-4.form-group
-          %label.search-label
-            Nivel Educativo
-          = f.collection_select :with_education_level, EducationLevel.all, :id, :name, { :include_blank => '- Todos -'}, :class => 'form-control'
         .col-lg-4.form-group
           %label.search-label
             Sector
           = f.collection_select :with_professional_area, ProfessionalArea.order(:name), :id, :name, { :include_blank => '- Todos -'}, :class => 'form-control'
+        .col-lg-4.form-group
+          %label.search-label
+            Nivel Educativo
+          = f.collection_select :with_education_level, EducationLevel.all, :id, :name, { :include_blank => '- Todos -'}, :class => 'form-control'
         .col-lg-4.form-group
           %label.search-label
             Área Educativa
@@ -34,9 +29,15 @@
           %label.search-label
             Distrito
           = f.grouped_collection_select :with_district_id, Province.all, :districts, :id, :id, :title, { :include_blank => '- Todos -'}, { :class => 'form-control', :id => 'district-filter'}
-      .col-lg-12.form-group
+      .col-lg-3.form-group
+        %br
+        %button.btn.btn-block.btn-lg.btn-info{ :type => 'button', 'data-toggle' => 'collapse', 'data-target' => '#collapseSearch', 'aria-expanded' => 'false', 'aria-controls' => 'collapseSearch' }
+          = fa_icon 'search'
+          Búsqueda Avanzada
+      .col-lg-3.form-group
+        %br
         = link_to( reset_filterrific_url, ) do
-          .btn.btn-info.btn-lg
+          .btn.btn-info.btn-block.btn-lg
             = fa_icon 'refresh'
             Restablecer Filtros
         = render_filterrific_spinner

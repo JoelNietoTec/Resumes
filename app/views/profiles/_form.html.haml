@@ -9,46 +9,46 @@
         .form-inputs
           = f.hidden_field :user_id, :value => current_user.id
           .col-lg-6
-            = f.input :forenames, label: 'Nombres', placeholder: 'Tus nombres...', input_html: { class: 'input-lg' }
+            = f.input :forenames, label: 'Nombres', placeholder: 'Tus nombres...'
           .col-lg-6
-            = f.input :surnames, label: 'Apellidos', placeholder: 'Tus apellidos...', input_html: { class: 'input-lg' }
+            = f.input :surnames, label: 'Apellidos', placeholder: 'Tus apellidos...'
           .col-lg-12
             = f.input :avatar, :as => :nice_image, label: 'Foto'
           .col-lg-12
-            = f.input :presentation, as: :wysihtml5, input_html: { class: 'input-lg' }, label: 'Presentación'
+            = f.input :presentation, as: :wysihtml5, label: 'Presentación'
           .col-lg-6
-            = f.input :email, label: 'Correo Electrónico', placeholder: 'tu@dominio.com', input_html: { class: 'input-lg' }
+            = f.input :email, label: 'Correo Electrónico', placeholder: 'tu@dominio.com'
           .col-lg-6
-            = f.input :phone_number, input_html: { class: 'input-lg' }, label: 'Teléfono', placeholder: 'Nro. de Teléfono'
+            = f.input :phone_number, label: 'Teléfono', placeholder: 'Nro. de Teléfono'
           .col-lg-3
-            = f.association :sex, include_blank: false, input_html: { class: 'input-lg' }, label: 'Sexo'
+            = f.association :sex, include_blank: false, label: 'Sexo'
           .col-lg-3
-            = f.association :marital_status, include_blank: false, input_html: { class: 'input-lg' }, label: 'Estado Civil'
+            = f.association :marital_status, include_blank: false, label: 'Estado Civil'
           .col-lg-6
-            = f.input :birth_date, as: :string, input_html: { class: 'datepicker input-lg' }, label: 'Fecha de Nacimiento', placeholder: 'Fecha de Nacimiento...'
+            = f.input :birth_date, as: :string, input_html: { class: 'datepicker' }, label: 'Fecha de Nacimiento', placeholder: 'Fecha de Nacimiento...'
           .col-lg-6
-            = f.input :nationality_id, collection: Country.order(:esp_name), value_method: :id, label_method: :esp_title, selected: '169', input_html: { class: 'input-lg' }, label: 'Nacionalidad'
+            = f.input :nationality_id, collection: Country.order(:esp_name), value_method: :id, label_method: :esp_title, selected: '169', label: 'Nacionalidad'
           .col-lg-6
-            = f.input :wage_aspiration, input_html: { class: 'input-lg' }, label: 'Aspiración Salarial', placeholder: 'Salario mensual deseado'
+            = f.input :wage_aspiration, label: 'Aspiración Salarial', placeholder: 'Salario mensual deseado'
           .col-lg-12
-            = f.input :skill_list, input_html: { class: 'input-lg', data:{ role:'tagsinput' }, value: @profile.skill_list.join(",") }, label: 'Habilidades', placeholder: 'Habilidades separadas por coma...'
+            = f.input :skill_list, input_html: { data:{ role:'tagsinput' }, value: @profile.skill_list.join(",") }, label: 'Habilidades', placeholder: 'Habilidades separadas por coma...'
           .col-lg-12
-            = f.input :professional_title, input_html: { class: 'input-lg' }, label: 'Título Profesional', placeholder: 'Ejem: "Administrador", "Analista", "Contador"'
+            = f.input :professional_title, label: 'Título Profesional', placeholder: 'Ejem: "Administrador", "Analista", "Contador"'
           = f.hidden_field :country_id, :value => '169'
           .col-lg-12
             %fieldset
               %legend
                 %h2 Ubicación
           .col-lg-4
-            = f.association :province, label_method: :title, value_method: :id, include_blank: false, input_html: { id: 'province_select', class: 'input-lg' }, label: 'Provincia'
+            = f.association :province, label_method: :title, value_method: :id, include_blank: false, input_html: { id: 'province_select' }, label: 'Provincia'
           .col-lg-4
             = f.input :district_id, label: 'Distrito' do
-              = f.grouped_collection_select :district_id, Province.all, :districts, :id, :id, :title, {}, { :class => 'form-control input-lg', :id => 'district_select' }
+              = f.grouped_collection_select :district_id, Province.all, :districts, :id, :id, :title, {}, { :class => 'form-control', :id => 'district_select' }
           .col-lg-4
             = f.input :township_id, label: 'Corregimiento' do
-              = f.grouped_collection_select :township_id, District.all, :townships, :id, :id, :title, {}, { :class => 'form-control input-lg', :id => 'township_select' }
+              = f.grouped_collection_select :township_id, District.all, :townships, :id, :id, :title, {}, { :class => 'form-control', :id => 'township_select' }
           .col-lg-12
-            = f.input :address, input_html: { class: 'input-lg' }, label: 'Dirección'
+            = f.input :address, label: 'Dirección'
     %br
     %fieldset
       %legend
@@ -66,21 +66,21 @@
               .btn.btn-warning
                 Eliminar
           .col-lg-12
-            = exp.input :position, label: 'Puesto', placeholder: 'Cargo desempeñado', input_html: { class: 'input-lg' }
+            = exp.input :position, label: 'Puesto', placeholder: 'Cargo desempeñado'
           .col-lg-12
-            = exp.input :company, label: 'Empresa', placeholder: 'Empleador', input_html: { class: "input-lg" }
+            = exp.input :company, label: 'Empresa', placeholder: 'Empleador'
           .col-lg-12
-            = exp.association :professional_area, collection: ProfessionalArea.order(:name), include_blank: false, input_html: { class: 'input-lg' }, label: 'Area'
+            = exp.association :professional_area, collection: ProfessionalArea.order(:name), include_blank: false, label: 'Area'
           .col-lg-6
-            = exp.input :starting_salary, label: "Salario Inicial", placeholder: 'Primer salario mensual devengado', input_html: { class: 'input-lg' }
+            = exp.input :starting_salary, label: "Salario Inicial", placeholder: 'Primer salario mensual devengado'
           .col-lg-6
-            = exp.input :final_salary, label: "Salario Final", placeholder: 'Último mensual salario devengado', input_html: { class: 'input-lg' }
+            = exp.input :final_salary, label: "Salario Final", placeholder: 'Último mensual salario devengado'
           .col-lg-6
-            = exp.input :begin_date, as: :string, label: "Fecha de Ingreso", input_html: { class:  "input-lg datepicker" }, placeholder: 'Fecha de ingreso al empleo'
+            = exp.input :begin_date, as: :string, label: "Fecha de Ingreso", input_html: { class:  "datepicker" }, placeholder: 'Fecha de ingreso al empleo'
           .col-lg-6
-            = exp.input :end_date, as: :string, label: 'Fecha de Salida', input_html: { class: "input-lg datepicker" }, placeholder: "Fecha de salida del empleo"
+            = exp.input :end_date, as: :string, label: 'Fecha de Salida', input_html: { class: "datepicker" }, placeholder: "Fecha de salida del empleo"
           .col-lg-12
-            = exp.input :job_description, input_html: { class: 'input-lg', rows: '5' }, label: 'Descripción de Funciones'
+            = exp.input :job_description, input_html: { rows: '5' }, label: 'Descripción de Funciones'
     %br
     %fieldset
       %legend
@@ -98,19 +98,19 @@
               .btn.btn-warning
                 Eliminar
           .col-lg-12
-            = stu.input :institution, label: 'Institución', placeholder: 'Casa de estudios', input_html: { class: 'input-lg' }
+            = stu.input :institution, label: 'Institución', placeholder: 'Casa de estudios'
           .col-lg-12
-            = stu.input :title, label: 'TÍtulo', placeholder: 'Título Obtenido', input_html: { class: "input-lg" }
+            = stu.input :title, label: 'TÍtulo', placeholder: 'Título Obtenido'
           .col-lg-6
-            = stu.association :educative_area, collection: EducativeArea.order(:name), id_method: 'id', label_method: 'title', include_blank: false, input_html: { class: 'input-lg' }, label: 'Area Professional'
+            = stu.association :educative_area, collection: EducativeArea.order(:name), id_method: 'id', label_method: 'title', include_blank: false, label: 'Area Professional'
           .col-lg-6
-            = stu.association :education_level, include_blank: false, input_html: { class: 'input-lg' }, label: 'Nivel Educativo'
+            = stu.association :education_level, include_blank: false, label: 'Nivel Educativo'
           .col-lg-5
-            = stu.input :begin_year, collection: 1950..Date.today.year, label: "Año de Ingreso", prompt: 'Seleccionar año de inicio', input_html: { class: 'input-lg' }
+            = stu.input :begin_year, collection: 1950..Date.today.year, label: "Año de Ingreso", prompt: 'Seleccionar año de inicio'
           .col-lg-5
-            = stu.input :end_year, collection: 1950..Date.today.year + 5, label: "Año de Finalización", prompt: 'Seleccionar año de finalización', input_html: { class: 'input-lg' }
+            = stu.input :end_year, collection: 1950..Date.today.year + 5, label: "Año de Finalización", prompt: 'Seleccionar año de finalización'
           .col-lg-2
-            = stu.input :finished, input_html: { class: 'input-lg' }, label_html: { class: 'control-label' }, label: 'Finalizado?'
+            = stu.input :finished, label_html: { class: 'control-label' }, label: 'Finalizado?'
   .col-md-12.hidden-lg
     .form-actions
       = f.button :submit, "Guardar Perfil", class: 'btn-lg btn-block btn-info'

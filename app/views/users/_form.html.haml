@@ -3,21 +3,21 @@
     background-image: url('/assets/Employee.jpg');
     background-repeat:no-repeat;
     background-size: cover;
-.col-lg-7.center-block
+.col-lg-6.center-block
   = minimal_form_for @user do |f|
     = f.error_notification
     #register-container.col-lg-12
-      %h1.text-warning.title-shadow.login-title Comparte tu talento
-      %h3.text-info.title-shadow.login-title
+      %h2.text-warning.title-shadow.login-title Comparte tu talento
+      %h4.text-info.title-shadow.login-title
         %i Encuentra oportunidades
       = f.hidden_field :role_id, :value => "2"
       = f.simple_fields_for :profile do |p|
         .col-lg-6
-          = p.input :forenames, placeholder: 'Nombres', input_html: { class: 'input-lg' }
+          = p.input :forenames, placeholder: 'Nombres'
         .col-lg-6
-          = p.input :surnames, placeholder: 'Apellidos', input_html: { class: 'input-lg' }
+          = p.input :surnames, placeholder: 'Apellidos'
       .col-lg-12
-        = f.input :email, placeholder: 'E-mail', input_html: { class: 'input-lg' }
-        = f.input :password,placeholder: 'Nueva Contraseña...', input_html: { class: 'input-lg' }
-        = f.input :password_confirmation, placeholder: 'Confirmar contraseña...', input_html: { class: 'input-lg' }
-        = f.button :submit, "Registrarse", class: 'btn-info btn-lg btn-block'
+        = f.input :email, placeholder: 'E-mail'
+        = f.input :password,placeholder: 'Nueva Contraseña...'
+        = f.input :password_confirmation, placeholder: 'Confirmar contraseña...'
+        = f.button :submit, "Registrarse", class: 'btn-info btn-block'

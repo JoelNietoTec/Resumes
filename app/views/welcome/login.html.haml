@@ -5,13 +5,13 @@
     background-size: cover;
 
 .col-lg-5.center-block.login-container
-  %h1.text-info.title-shadow.login-title Comparte tu talento
-  %h3.text-secondary.text-warning.title-shadow.login-title
+  %h2.text-info.title-shadow.login-title Comparte tu talento
+  %h4.text-secondary.text-warning.title-shadow.login-title
     %i Encuentra oportunidades
   = minimal_form_for :sessions, :url => sessions_path do |f|
-    = f.input :email, placeholder: 'E-mail...', input_html: { class: 'input-lg' }
-    = f.input :password, placeholder: 'Contraseña...', input_html: { class: 'input-lg' }
-    = f.button :submit, "Iniciar Sesión", class: 'btn-warning btn-block btn-lg'
+    = f.input :email, placeholder: 'E-mail...'
+    = f.input :password, placeholder: 'Contraseña...'
+    = f.button :submit, "Iniciar Sesión", class: 'btn-warning btn-block'
   %p.register-link
     ¿No tienes cuenta?
     = link_to "Registrarse", new_user_path

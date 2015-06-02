@@ -2698,8 +2698,7 @@ fieldset[disabled] .checkbox label {
 }
 
 .control-label {
-  font-size: 20px;
-  font-weight: bold;
+  font-size: 17x;
 }
 .input-sm {
   height: 28px;
